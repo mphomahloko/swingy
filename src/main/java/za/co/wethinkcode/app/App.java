@@ -1,13 +1,25 @@
 package za.co.wethinkcode.app;
 
+import za.co.wethinkcode.app.model.Hero;
+import za.co.wethinkcode.app.model.HeroBuilder;
+import za.co.wethinkcode.app.model.HeroEngineer;
+import za.co.wethinkcode.app.model.OldHeroBuilder;
+
 /**
- * Hello world!
- *
+ *  
  */
-public class App 
-{
+public class App {
     public static void main( String[] args )
     {
-        System.out.println( args[0] );
+        HeroBuilder oBuilder = new OldHeroBuilder();
+
+        HeroEngineer hEngineer = new HeroEngineer(oBuilder);
+
+        hEngineer.makeHero();
+
+        Hero fHero = hEngineer.getHero();
+
+        System.out.println("\nHero Built\n");
+        System.out.println("Hero Name: " + fHero.getHeroName() + "\n");
     }
 }
