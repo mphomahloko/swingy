@@ -8,7 +8,6 @@
   <groupId>za.co.wethinkcode.app</groupId>
   <artifactId>swingy</artifactId>
   <packaging>jar</packaging>
-  <!---SNAPSHOT-->
   <version>1.0</version>
 
   <name>swingy</name>
@@ -20,7 +19,8 @@
 		<maven.compiler.source>1.7</maven.compiler.source>
 		<maven.compiler.target>1.7</maven.compiler.target>
   </properties>
-<!-- Testing Purposes -->
+
+  <!-- Testing Purposes -->
   <dependencies>
     <dependency>
       <groupId>junit</groupId>  
@@ -44,11 +44,12 @@
         </configuration>
       </plugin>
 
-      <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
+    <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jar-plugin</artifactId>
         <version>3.0.2</version>
+        <!-- Main class configuration -->
         <configuration>
             <archive>
               <manifest>
