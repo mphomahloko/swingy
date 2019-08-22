@@ -19,7 +19,7 @@ public class App {
 
         Hero fHero = hEngineer.getHero();
 
-        System.out.println("\nHero Built\n");
-        System.out.println("Hero Name: " + fHero.getHeroName() + "\n");
+        System.out.println("\nHero Built");
+        System.out.println("Hero Name: " + fHero.getHeroName());
     }
 }
