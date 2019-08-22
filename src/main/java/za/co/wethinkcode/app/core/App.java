@@ -1,4 +1,4 @@
-package za.co.wethinkcode.app;
+package za.co.wethinkcode.app.core;
 
 import za.co.wethinkcode.app.model.Hero;
 import za.co.wethinkcode.app.model.HeroBuilder;
