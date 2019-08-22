@@ -1,4 +1,5 @@
 .settings
 .gitattributes
 .vscode
+.project
 .gitignore
