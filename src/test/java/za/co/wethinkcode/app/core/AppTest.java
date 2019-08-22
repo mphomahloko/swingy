@@ -1,4 +1,4 @@
-package za.co.wethinkcode.app;
+package za.co.wethinkcode.app.core;
 
 import junit.framework.Test;
 import junit.framework.TestCase;
