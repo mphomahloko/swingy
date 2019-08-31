@@ -8,7 +8,7 @@
   <groupId>za.co.wethinkcode.app</groupId>
   <artifactId>swingy</artifactId>
   <packaging>jar</packaging>
-  <version>1.0</version>
+  <version>1.0-SNAPHOT</version>
 
   <name>swingy</name>
   <url>http://maven.apache.org</url>
@@ -48,6 +48,9 @@
   </dependencies>
 
   <build>
+
+    <finalName>${project.artifactId}</finalName>
+
     <plugins>
 
   <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
