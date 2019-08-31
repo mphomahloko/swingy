@@ -7,10 +7,16 @@ import za.co.wethinkcode.app.controller.ConsoleController;
  */
 
 public class App {
-    public static void main( String[] args )
+    public char mapz [][];
+    public static void main( String [] args )
     {
+        GameMap mapz = new GameMap();
+        mapz.placePlayer();
+        mapz.moveLeft();
+        mapz.drawMap();
         try
         {
+            
             if (args[0].equals("console")) { new ConsoleController(); }
             else if (args[0].equals("gui")) { System.out.println("gui"); }
 
