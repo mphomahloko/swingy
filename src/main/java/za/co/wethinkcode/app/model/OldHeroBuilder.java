@@ -9,11 +9,11 @@ public class OldHeroBuilder implements HeroBuilder {
     }
 
     @Override
-    public void buildHeroName() {
-        _hero.setHeroName("give me a Name");
+    public void buildHeroName(String name) {
+        _hero.setHeroName(name);
         return ;
     }
 
     @Override
-    public Hero gethHero() { return _hero; }
+    public Hero getHero() { return _hero; }
 }

@@ -1,6 +1,6 @@
 package za.co.wethinkcode.app.controller;
 
-import za.co.wethinkcode.app.core.GameController;
+import za.co.wethinkcode.app.controller.GameController;
 import za.co.wethinkcode.app.view.gui.GUIView;
 
 public class GUIController extends GameController {

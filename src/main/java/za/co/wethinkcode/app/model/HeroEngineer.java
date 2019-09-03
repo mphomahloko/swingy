@@ -8,10 +8,10 @@ public class HeroEngineer {
         return ;
     }
 
-    public Hero getHero() { return _heroBuilder.gethHero(); }
+    public Hero getHero() { return _heroBuilder.getHero(); }
 
-    public void makeHero() {
-        _heroBuilder.buildHeroName();
+    public void makeHero(String name) {
+        _heroBuilder.buildHeroName(name);
         return ;
     }
 }

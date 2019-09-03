@@ -3,6 +3,7 @@ package za.co.wethinkcode.app.core;
 public class GameMap {
 	private String [][] _map;
 	private int _heroX, _heroY;
+
 	public GameMap() {
 		//rough sketch
 
@@ -15,7 +16,7 @@ public class GameMap {
 	
 	private void _renderMap() {
 		for (int i = 0; i < this._map.length; i += 1) {
-			for (int j = 0; j < this._map.length; j += 1){
+			for (int j = 0; j < this._map.length; j += 1) {
 				this._map[i][j] = ".";
 			}
 		}
@@ -52,13 +53,13 @@ public class GameMap {
 		this._heroY -= 1;
 		_renderMap();
 		placePlayer();
-		return;
+		return ;
 	}
 
 	// place in view
 	public void drawMap() {
 		for (int i = 0; i < this._map.length; i += 1) {
-			for (int j = 0; j < this._map.length; j += 1){
+			for (int j = 0; j < this._map.length; j += 1) {
 				System.out.print(this._map[i][j]);
 			}
 			System.out.println();
