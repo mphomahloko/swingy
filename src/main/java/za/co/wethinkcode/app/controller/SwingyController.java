@@ -1,4 +1,4 @@
-package za.co.za.co.wethinkcode.app.controller;
+package za.co.wethinkcode.app.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
