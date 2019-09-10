@@ -15,11 +15,18 @@ public class App {
                 SwingyModel model = new SwingyModel();
                 SwingyView view = new SwingyView();
                 SwingyController controller = new SwingyController(model, view);
+                if (args[0].equals("gui")) {
+                    controller.guiInterraction();
+                }else{
+                    controller.consoleInterraction();
+                }
             }else {
                 throw new Exception();
             }
         }catch(Exception e) {
             System.out.println("Please choose weather to run in gui or console.");
         }
+
+        return ;
     }
 }

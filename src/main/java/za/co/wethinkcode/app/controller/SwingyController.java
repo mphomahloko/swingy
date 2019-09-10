@@ -14,16 +14,26 @@ public class SwingyController {
 		_theView = theView;
 		_theModel = theModel;
 
-		System.out.println("Controller has been instantiated");
-		// _theView.addPlayersInterraction(new SwingyListner());
-
+		return ;
+	}
+	
+	public void guiInterraction() {
+		
+		_theView.initGUIView();
+		_theView.setVisible(true);
+		_theView.addPlayersInterraction(new SwingyListner());
+		return ;
+	}
+	
+	public void consoleInterraction() {
 		return ;
 	}
 
 	class SwingyListner implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println("A field in the view was modified.");
+			System.out.println(e.getActionCommand());
+			_theView.initGUIViewClear();
 			return ;
 		}
 	}
