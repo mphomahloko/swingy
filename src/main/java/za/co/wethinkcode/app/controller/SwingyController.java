@@ -10,11 +10,12 @@ public class SwingyController {
 	private SwingyView _theView;
 	private SwingyModel _theModel;
 
-	public SwingyController(SwingyView theView, SwingyModel theModel) {
+	public SwingyController(SwingyModel theModel, SwingyView theView) {
 		_theView = theView;
 		_theModel = theModel;
 
-		_theView.addPlayersInterraction(new SwingyListner());
+		System.out.println("Controller has been instantiated");
+		// _theView.addPlayersInterraction(new SwingyListner());
 
 		return ;
 	}
