@@ -18,7 +18,6 @@ public class SwingyController {
 	}
 	
 	public void guiInterraction() {
-		
 		_theView.initGUIView();
 		_theView.setVisible(true);
 		_theView.addPlayersInterraction(new SwingyListner());
@@ -32,8 +31,9 @@ public class SwingyController {
 	class SwingyListner implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			System.out.println(e.getActionCommand());
-			_theView.initGUIViewClear();
+			if (e.getActionCommand().equals("New Game.")) {
+				_theView.initGUIViewClear();
+			}
 			return ;
 		}
 	}

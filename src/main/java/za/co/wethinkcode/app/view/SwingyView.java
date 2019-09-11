@@ -34,6 +34,11 @@ public class SwingyView extends JFrame {
 		this.repaint();
 	}
 
+	public void newGameGUI() {
+		
+		return ;
+	}
+
 	public void addPlayersInterraction(ActionListener listensForAction) {
 		_newGame.addActionListener(listensForAction);
 		_continue.addActionListener(listensForAction);
