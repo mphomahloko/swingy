@@ -52,9 +52,8 @@ public class SwingyView extends JFrame {
 		return ;
 	}
 
-	public void heroName() {
-		System.out.println(_getHeroName.getText());
-		return ;
+	public String heroName() {
+		return _getHeroName.getText();
 	}
 
 	public void addPlayersInterraction(ActionListener listensForAction) {

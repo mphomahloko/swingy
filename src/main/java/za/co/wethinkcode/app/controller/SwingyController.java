@@ -23,6 +23,10 @@ public class SwingyController {
 		return ;
 	}
 
+	private void _createHero() {
+		_theView.newGameGUI();
+	}
+
 	public void consoleInterraction() {
 		return ;
 	}
@@ -32,8 +36,7 @@ public class SwingyController {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getActionCommand().equals("New Game.")) {
 				_theView.initGUIViewClear();
-				_theView.newGameGUI();
-				// _theView.addPlayersInterraction(new SwingyListner());
+				_createHero();
 			}
 			if (e.getActionCommand().equals("Create Hero.")) {
 				_theView.heroName();
