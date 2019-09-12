@@ -19,11 +19,10 @@ public class SwingyController {
 	
 	public void guiInterraction() {
 		_theView.initGUIView();
-		_theView.setVisible(true);
 		_theView.addPlayersInterraction(new SwingyListner());
 		return ;
 	}
-	
+
 	public void consoleInterraction() {
 		return ;
 	}
@@ -33,7 +32,13 @@ public class SwingyController {
 		public void actionPerformed(ActionEvent e) {
 			if (e.getActionCommand().equals("New Game.")) {
 				_theView.initGUIViewClear();
+				_theView.newGameGUI();
+				// _theView.addPlayersInterraction(new SwingyListner());
 			}
+			if (e.getActionCommand().equals("Create Hero.")) {
+				_theView.heroName();
+			}
+			System.out.println(e.getActionCommand());
 			return ;
 		}
 	}
