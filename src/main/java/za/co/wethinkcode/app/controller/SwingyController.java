@@ -21,17 +21,20 @@ public class SwingyController {
 	}
 	
 	public void guiInterraction() {
+		_theView.iniView();
 		_theView.addPlayersInterraction(new SwingyListner());
 		return ;
 	}
 
 	public void consoleInterraction() {
+		_theView.iniView();
 		Scanner choice = new Scanner(System.in);
 		int inputChoice = choice.nextInt();
 		System.out.println(inputChoice);
 		if (inputChoice == 1) {
 			_theView.clearView();
-			System.out.println("Correct choice 1");
+			_theView.newGameView();
+			_buildHero();
 		} else if (inputChoice == 2) {
 			_theView.clearView();
 			System.out.println("Correct choice 2");
