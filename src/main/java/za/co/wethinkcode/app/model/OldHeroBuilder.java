@@ -1,5 +1,6 @@
 package za.co.wethinkcode.app.model;
 
+    /* types of heros */
 public class OldHeroBuilder implements HeroBuilder {
     private Hero _hero;
 
