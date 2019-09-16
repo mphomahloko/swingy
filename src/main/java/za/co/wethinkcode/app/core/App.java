@@ -6,10 +6,6 @@ import za.co.wethinkcode.app.view.SwingyView;
 import za.co.wethinkcode.app.view.gui.ViewGUI;
 import za.co.wethinkcode.app.view.console.ViewConsole;
 
-/**
- *  Entry point
- */
-
 public class App {
     public static void main(String [] args) {
         try {

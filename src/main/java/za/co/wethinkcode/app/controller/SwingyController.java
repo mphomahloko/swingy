@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 import za.co.wethinkcode.app.model.SwingyModel;
 import za.co.wethinkcode.app.view.SwingyView;
-import za.co.wethinkcode.app.view.gui.ViewGUI;
-import za.co.wethinkcode.app.view.console.ViewConsole;
 
 public class SwingyController {
 	private SwingyView _theView;
