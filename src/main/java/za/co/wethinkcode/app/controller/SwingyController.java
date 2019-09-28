@@ -27,17 +27,21 @@ public class SwingyController {
 	public void consoleInterraction() {
 		_theView.iniView();
 		Scanner choice = new Scanner(System.in);
-		int inputChoice = choice.nextInt();
-		System.out.println(inputChoice);
-		if (inputChoice == 1) {
-			_theView.clearView();
-			_theView.newGameView();
-			_buildHero();
-		} else if (inputChoice == 2) {
-			_theView.clearView();
-			System.out.println("Correct choice 2");
-		} else {
-			_theView.clearView();
+		
+		try{
+			int inputChoice = choice.nextInt();
+			if (inputChoice == 1) {
+				// _theView.clearView();
+				_theView.newGameView();
+				_buildHero();
+			} else if (inputChoice == 2) {
+				// _theView.clearView();
+				System.out.println("Correct choice 2");
+			} else {
+				// _theView.clearView();
+				consoleInterraction();
+			}
+		}catch(Exception e) {
 			consoleInterraction();
 		}
 		return ;
