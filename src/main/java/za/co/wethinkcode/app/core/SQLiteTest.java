@@ -20,7 +20,7 @@ public class SQLiteTest {
         return res;
     }
 
-    private void getConnection() throws SQLException, ClassNotFoundException {
+    private void getConnection() throws  ClassNotFoundException, SQLException {
         Class.forName("org.sqlite.JDBC");
         con = DriverManager.getConnection("jdbc:sqlite:SQLiteTest1.db");
         initialise();
@@ -30,23 +30,23 @@ public class SQLiteTest {
         if (!hasData) {
             hasData = true;
             Statement state = con.createStatement();
-            ResultSet res =  state.executeQuery("SELECT name FROM sqlite master WHERE type ='table' AND name='user'");
+            ResultSet res =  state.executeQuery("SELECT name FROM sqlite_master WHERE type='table' AND name='user'");
             if (!res.next()) {
                 System.out.println("building the user table");
                 // need to build the table
                 Statement state2 = con.createStatement();
                 state2.execute("CREATE TABLE user(id integer,"
                 + "fname varchar(60)," + "lname varchar(60),"
-                + "primary key(id);");
+                + "primary key(id));");
                 // inserting some sample data
-                PreparedStatement prep = con.prepareStatement("INSERT INTO user VALUES(?,?,?);");
-                prep.setString(2, "Mpho");
-                prep.setString(3, "Mahloko");
+                PreparedStatement prep = con.prepareStatement("INSERT INTO user(fname, lname) VALUES(?,?);");
+                prep.setString(1, "Mpho");
+                prep.setString(2, "Mahloko");
                 prep.execute();
 
-                PreparedStatement prep2 = con.prepareStatement("INSERT INTO user VALUES(?,?,?);");
-                prep2.setString(2, "Mpho1");
-                prep2.setString(3, "Mahlok1o");
+                PreparedStatement prep2 = con.prepareStatement("INSERT INTO user(fname, lname) VALUES(?,?);");
+                prep2.setString(1, "Mpho1");
+                prep2.setString(2, "Mahlok1o");
                 prep2.execute();
             }
         }
@@ -56,9 +56,9 @@ public class SQLiteTest {
         if (con == null ) {
             getConnection();
         }
-        PreparedStatement prep = con.prepareStatement("INSERT INTO user VALUES(?,?,?);");
-        prep.setString(2, firstname);
-        prep.setString(3, lastname);
+        PreparedStatement prep = con.prepareStatement("INSERT INTO user(fname, lname) VALUES(?,?);");
+        prep.setString(1, firstname);
+        prep.setString(2, lastname);
         prep.execute();
     } 
 }

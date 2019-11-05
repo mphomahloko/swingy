@@ -53,40 +53,81 @@
     
   </dependencies>
 
-  <build>
+    <build>
+        <finalName>${project.artifactId}</finalName>
 
-    <finalName>${project.artifactId}</finalName>
+        <plugins>
 
-    <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>2.1</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>za.co.wethinkcode.app.core.App</mainClass>
+                                </transformer>
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
-  <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.1</version>
-        <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
-        </configuration>
-      </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.7</source>
+                    <target>1.7</target>
+                </configuration>
+            </plugin>
 
-  <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.0.2</version>
-        <!-- Main class configuration -->
-        <configuration>
-            <archive>
-              <manifest>
-                <addClasspath>true</addClasspath>
-                <mainClass>za.co.wethinkcode.app.core.App</mainClass>
-              </manifest>
-            </archive>
-        </configuration>
-      </plugin>
+        </plugins>
 
-    </plugins>
-  </build>
+    </build>
+
+<!--  <build>-->
+
+<!--    <finalName>${project.artifactId}</finalName>-->
+
+<!--    <plugins>-->
+
+<!--  &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-compiler-plugin &ndash;&gt;-->
+     <!-- <plugin>
+       <groupId>org.apache.maven.plugins</groupId>
+       <artifactId>maven-compiler-plugin</artifactId>
+       <version>3.1</version>
+       <configuration>
+         <source>1.7</source>
+         <target>1.7</target>
+       </configuration>
+     </plugin> -->
+
+<!--  &lt;!&ndash; https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-jar-plugin &ndash;&gt;-->
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-jar-plugin</artifactId>-->
+<!--        <version>3.0.2</version>-->
+<!--        &lt;!&ndash; Main class configuration &ndash;&gt;-->
+<!--        <configuration>-->
+<!--            <archive>-->
+<!--              <manifest>-->
+<!--                <addClasspath>true</addClasspath>-->
+<!--                <mainClass>za.co.wethinkcode.app.core.App</mainClass>-->
+<!--              </manifest>-->
+<!--            </archive>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
+
+<!--    </plugins>-->
+<!--  </build>-->
   
 </project>

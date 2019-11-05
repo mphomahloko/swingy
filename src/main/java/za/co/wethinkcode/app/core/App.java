@@ -15,6 +15,7 @@ public class App {
         ResultSet re;
 
         try {
+            test.addUser("hello", "there");
             re = test.displayUsers();
 
             while(re.next()){
