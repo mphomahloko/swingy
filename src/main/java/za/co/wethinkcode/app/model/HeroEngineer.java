@@ -11,7 +11,7 @@ public class HeroEngineer {
     public Hero getHero() { return _heroBuilder.getHero(); }
 
     public void makeHero(String name) {
-        _heroBuilder.buildHeroName(name);
+        _heroBuilder.buildHero(name);
         return ;
     }
 }

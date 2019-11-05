@@ -10,8 +10,16 @@ public class OldHeroBuilder implements HeroBuilder {
     }
 
     @Override
-    public void buildHeroName(String name) {
+    public void buildHero(String name) {
         _hero.setHeroName(name);
+        _hero.setHeroXP(50);
+        _hero.setHeroHP(150);
+        _hero.setHeroLevel(1);
+        _hero.setHeroAttack(10);
+        _hero.setHeroDefence(5);
+
+        _hero.setHeroX(0);
+        _hero.setHeroY(0);
         return ;
     }
 

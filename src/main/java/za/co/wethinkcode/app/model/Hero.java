@@ -22,7 +22,7 @@ public class Hero implements HeroPlan {
         _name = name;
         return ;
     }
-    
+
     @Override
     public String getHeroName() { return _name; }
 
@@ -125,5 +125,10 @@ public class Hero implements HeroPlan {
 
     @Override
     public Integer getHeroY() { return _y; }
+
+    @Override
+    public String toString() { 
+        return String.format("Name: " + _name); 
+    }
 
 }

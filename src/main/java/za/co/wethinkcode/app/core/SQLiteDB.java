@@ -7,7 +7,7 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class SQLiteTest {
+public class SQLiteDB {
     private static Connection con;
     private static boolean hasData = false;
 

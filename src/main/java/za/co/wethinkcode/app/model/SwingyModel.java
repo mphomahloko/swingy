@@ -14,7 +14,7 @@ public class SwingyModel {
         Hero fHero = hEngineer.getHero();
 
         System.out.println("\nHero Built");
-        System.out.println("Hero Name: " + fHero.getHeroName());
+        System.out.println(fHero.toString());
         return ;
 	}
 }
