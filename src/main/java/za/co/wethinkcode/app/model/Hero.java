@@ -16,15 +16,17 @@ public class Hero implements HeroPlan {
     private Integer _x;
     private Integer _y;
 
+/*              Hero Name                                                      */
     @Override
     public void setHeroName(String name) {
         _name = name;
         return ;
     }
-
+    
     @Override
     public String getHeroName() { return _name; }
 
+/*                       Hero Id                                               */
     @Override
     public void setHeroId(Integer id) {
         _id = id;
@@ -34,6 +36,7 @@ public class Hero implements HeroPlan {
     @Override
     public Integer getHeroId() { return _id; }
 
+/*                      Hero Type                                              */
     @Override
     public void setHeroType(String type) {
         _type = type;
@@ -43,6 +46,7 @@ public class Hero implements HeroPlan {
     @Override
     public String getHeroType() { return _type; }
 
+/*                     Hero Xp                                                 */
     @Override
     public void setHeroXP(Integer xp) {
         _xp = xp;
@@ -52,6 +56,7 @@ public class Hero implements HeroPlan {
     @Override
     public Integer getHeroXP() { return _xp; }
 
+/*                     Hero Hp                                                 */
     @Override
     public void setHeroHP(Integer hp) {
         _hp = hp;
@@ -61,6 +66,7 @@ public class Hero implements HeroPlan {
     @Override
     public Integer getHeroHP() { return _hp; }
 
+/*                     Hero Level                                              */
     @Override
     public void setHeroLevel(Integer level) {
         _level = level;
@@ -70,6 +76,7 @@ public class Hero implements HeroPlan {
     @Override
     public Integer getHeroLevel() { return _level; }
 
+/*                     Hero attack                                            */
     @Override
     public void setHeroAttack(Integer attack) {
         _attack = attack;
@@ -79,6 +86,7 @@ public class Hero implements HeroPlan {
     @Override
     public Integer getHeroAttack() { return _attack; }
 
+/*                    Hero Defence                                            */
     @Override
     public void setHeroDefence(Integer defence) {
         _defence = defence;
@@ -88,6 +96,7 @@ public class Hero implements HeroPlan {
     @Override
     public Integer getHeroDefence() { return _defence; }
 
+/*                    Hero Artifact                                           */
     @Override
     public void setHeroArtifact(String artifact) {
         _artifact = artifact;
@@ -97,8 +106,8 @@ public class Hero implements HeroPlan {
     @Override
     public String getHeroArtifact() { return _artifact; }
 
-    // Position of the Hero
 
+/*                   Hero Position                                            */
     @Override
     public void setHeroX(Integer x) {
         _x = x;
