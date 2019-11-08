@@ -33,6 +33,12 @@ public class ViewConsole implements SwingyView {
     }
 
     @Override
+    public void continueView() {
+        System.out.println("Previously saved games.");
+        return ;
+    }
+
+    @Override
 	public void clearView() {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();

@@ -12,5 +12,6 @@ public interface SwingyView {
 	public void newGameView();
 	public String getHeroName();
 	public void clearView();
+	public void continueView();
 	public void addPlayersInterraction(ActionListener listensForAction);
 }

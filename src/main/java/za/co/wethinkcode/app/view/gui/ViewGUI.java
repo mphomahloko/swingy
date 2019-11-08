@@ -63,6 +63,9 @@ public class ViewGUI extends JFrame implements SwingyView {
 		return ;
 	}
 
+	@Override
+	public void continueView(){ return ;}
+
     @Override
 	public void clearView() {
 		this.remove(_view);

@@ -24,6 +24,7 @@ public class PlayerStatDB {
     public static PlayerStatDB getPlayerStats() {
         return PlayerStatDB._db;
     }
+    
     // for the continue screen
     public List<Map<String, String>> getUsers() throws SQLException, ClassNotFoundException {
         if (connect == null)

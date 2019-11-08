@@ -10,6 +10,10 @@ import za.co.wethinkcode.app.view.SwingyView;
 import za.co.wethinkcode.app.core.PlayerStatDB;
 
 import java.sql.SQLException;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SwingyController {
 	private SwingyView _theView;
@@ -43,7 +47,7 @@ public class SwingyController {
 				consoleGameLoop();
 			} else if (inputChoice == 2) {
 				_theView.clearView();
-				System.out.println("Correct choice 2");
+				continueOnConsole();
 			} else {
 				_theView.clearView();
 				consoleInterraction();
@@ -52,6 +56,34 @@ public class SwingyController {
 			consoleInterraction();
 		}
 		return ;
+	}
+
+	private void continueOnConsole() {
+		_theView.continueView();
+		Scanner choice = new Scanner(System.in);
+		int i = 1;
+		try {
+			PlayerStatDB db = PlayerStatDB.getPlayerStats();
+			List<Map<String, String>> stats = db.getUsers();
+
+			for (Map<String,String> m:stats) {
+				System.out.print(i++ + ". ");
+ 				for (Map.Entry<String,String> e:m.entrySet()) {
+    				String key = e.getKey();
+    				String value = e.getValue();
+					if (key == "name") {
+    					System.out.println(value);
+					}
+  				}	
+			}
+
+		}catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
 	}
 
 	private void _buildHero() {
