@@ -33,16 +33,16 @@ public class SwingyController {
 		try{
 			int inputChoice = choice.nextInt();
 			if (inputChoice == 1) {
-				// _theView.clearView();
+				_theView.clearView();
 				_theView.newGameView();
 				_buildHero();
 				_map.drawMap();
 				consoleGameLoop();
 			} else if (inputChoice == 2) {
-				// _theView.clearView();
+				_theView.clearView();
 				System.out.println("Correct choice 2");
 			} else {
-				// _theView.clearView();
+				_theView.clearView();
 				consoleInterraction();
 			}
 		}catch(Exception e) {
