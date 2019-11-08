@@ -20,6 +20,7 @@ public class GameMap {
 				this._map[i][j] = ".";
 			}
 		}
+		placePlayer();
 		return ;
 	}
 
@@ -31,28 +32,28 @@ public class GameMap {
 	public void moveRight() {
 		this._heroX += 1;
 		_renderMap();
-		placePlayer();
+		drawMap();
 		return ;
 	}
 
 	public void moveLeft() {
 		this._heroX -= 1;
 		_renderMap();
-		placePlayer();
+		drawMap();
 		return ;
 	}
 
 	public void moveDown() {
 		this._heroY += 1;
 		_renderMap();
-		placePlayer();
+		drawMap();
 		return ;
 	}
 
 	public void moveUp() {
 		this._heroY -= 1;
 		_renderMap();
-		placePlayer();
+		drawMap();
 		return ;
 	}
 
