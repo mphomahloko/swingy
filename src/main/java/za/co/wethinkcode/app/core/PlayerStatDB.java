@@ -24,7 +24,7 @@ public class PlayerStatDB {
     public static PlayerStatDB getPlayerStats() {
         return PlayerStatDB._db;
     }
-
+    // for the continue screen
     public List<Map<String, String>> getUsers() throws SQLException, ClassNotFoundException {
         if (connect == null)
             getConnection();
@@ -77,26 +77,25 @@ public class PlayerStatDB {
     public ResultSet getGeneratedKeys() throws SQLException, ClassNotFoundException {
         if (connect == null)
             getConnection();
-        PreparedStatement getGeneratedKeys = connect.prepareStatement(
-                "SELECT MAX(id) AS LAST FROM users;");
+        PreparedStatement getGeneratedKeys = connect.prepareStatement("SELECT MAX(id) AS LAST FROM users;");
         return getGeneratedKeys.executeQuery();
     }
 
-    public void updateInfo(int id, String name, String type, int xp, int hp, int attack, int defence, int level, int y, int x, String artifact) throws SQLException, ClassNotFoundException {
+    public void updateInfo(Hero hero) throws SQLException, ClassNotFoundException {
         if (connect == null){
             getConnection();
         }
-        PreparedStatement pStatement = connect.prepareStatement("UPDATE users SET name = ?, type = ?, xp = ?, hp = ?, attack = ?, defence = ?, level = ?, y = ?, x = ?, artifact = ? WHERE id = "+id+";");
-        pStatement.setString(1, name);
-        pStatement.setString(2, type);
-        pStatement.setInt(3, xp);
-        pStatement.setInt(4, hp);
-        pStatement.setInt(5, attack);
-        pStatement.setInt(6, defence);
-        pStatement.setInt(7, level);
-        pStatement.setInt(8, y);
-        pStatement.setInt(9, x);
-        pStatement.setString(10, artifact);
+        PreparedStatement pStatement = connect.prepareStatement("UPDATE users SET name = ?, type = ?, xp = ?, hp = ?, attack = ?, defence = ?, level = ?, y = ?, x = ?, artifact = ? WHERE id = "+hero.getHeroId()+";");
+        pStatement.setString(1, hero.getHeroName());
+        pStatement.setString(2, hero.getHeroType());
+        pStatement.setInt(3, hero.getHeroXP());
+        pStatement.setInt(4, hero.getHeroHP());
+        pStatement.setInt(5, hero.getHeroAttack());
+        pStatement.setInt(6, hero.getHeroDefence());
+        pStatement.setInt(7, hero.getHeroLevel());
+        pStatement.setInt(8, hero.getHeroY());
+        pStatement.setInt(9, hero.getHeroX());
+        pStatement.setString(10, hero.getHeroArtifact());
         pStatement.execute();
         pStatement.close();
     }

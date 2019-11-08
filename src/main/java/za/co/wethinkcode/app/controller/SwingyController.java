@@ -7,11 +7,14 @@ import java.util.Scanner;
 import za.co.wethinkcode.app.core.GameMap;
 import za.co.wethinkcode.app.model.SwingyModel;
 import za.co.wethinkcode.app.view.SwingyView;
+import za.co.wethinkcode.app.core.PlayerStatDB;
+
+import java.sql.SQLException;
 
 public class SwingyController {
 	private SwingyView _theView;
 	private SwingyModel _theModel;
-	private GameMap _map = new GameMap();;
+	private GameMap _map;
 
 	public SwingyController(SwingyModel theModel, SwingyView theView) {
 		_theView = theView;
@@ -52,12 +55,14 @@ public class SwingyController {
 	}
 
 	private void _buildHero() {
-		_theModel.createHero(_theView.getHeroName());
+		_map = new GameMap(_theModel.createHero(_theView.getHeroName()));
 		return ;
 	}
 
 	private void consoleGameLoop() {
 		Scanner choice = new Scanner(System.in);
+		PlayerStatDB db = PlayerStatDB.getPlayerStats();
+
 		while (true) {
 			System.out.println("1.move up\n2.move down\n3.move left\n4.move right");
 			try{
@@ -74,7 +79,13 @@ public class SwingyController {
 				 else {
 					 System.out.println("Read the following instructions properly!.");
 				}
-			}catch(Exception e) {
+
+            	db.updateInfo(_map.hero);
+			}catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch(Exception e) {
 				System.out.println("Something went wrong!.");
 			}
 		}

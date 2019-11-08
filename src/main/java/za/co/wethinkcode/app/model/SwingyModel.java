@@ -10,7 +10,8 @@ public class SwingyModel {
         return ;
     }
 
-	public void createHero(String hName){
+    // turn this into a factory
+	public Hero createHero(String hName){
 		HeroBuilder oBuilder = new OldHeroBuilder();
         HeroEngineer hEngineer = new HeroEngineer(oBuilder);
 		
@@ -22,7 +23,7 @@ public class SwingyModel {
         try {
             db.insertInfo(hero);
             ResultSet res = db.getGeneratedKeys();
-            while(res.next()){
+            while(res.next()) {
                hero.setHeroId(Integer.parseInt(res.getString("LAST")));
             }
             System.out.println(hero.toString());
@@ -31,9 +32,9 @@ public class SwingyModel {
         } catch (SQLException e) {
             e.printStackTrace();
         } catch(Exception e) {
-            System.out.println("Please choose weather to run in gui or console.");
+            e.printStackTrace();
         }
 
-        return ;
+        return hero;
 	}
 }

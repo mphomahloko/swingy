@@ -1,14 +1,16 @@
 package za.co.wethinkcode.app.core;
 
+import za.co.wethinkcode.app.model.Hero;
+
 public class GameMap {
 	private String [][] _map;
-	private int _heroX, _heroY;
+	public Hero hero;
 
-	public GameMap() {
+	public GameMap(Hero hero) {
 		//rough sketch
-
-		this._heroX = 39 / 2;
-		this._heroY = 39 / 2;
+		this.hero = hero;
+		this.hero.setHeroX(39 / 2);
+		this.hero.setHeroY(39 / 2);
 		this._map = new String[39][39];
 		_renderMap();
 		return ;
@@ -25,33 +27,33 @@ public class GameMap {
 	}
 
 	public void placePlayer() {
-		this._map[_heroY][_heroX] = "P";
+		this._map[hero.getHeroY()][hero.getHeroX()] = "P";
 		return ;
 	}
 
 	public void moveRight() {
-		this._heroX += 1;
+		hero.setHeroX(hero.getHeroX() + 1);
 		_renderMap();
 		drawMap();
 		return ;
 	}
 
 	public void moveLeft() {
-		this._heroX -= 1;
+		hero.setHeroX(hero.getHeroX() - 1);
 		_renderMap();
 		drawMap();
 		return ;
 	}
 
 	public void moveDown() {
-		this._heroY += 1;
+		hero.setHeroY(hero.getHeroY() + 1);
 		_renderMap();
 		drawMap();
 		return ;
 	}
 
 	public void moveUp() {
-		this._heroY -= 1;
+		hero.setHeroY(hero.getHeroY() - 1);
 		_renderMap();
 		drawMap();
 		return ;
