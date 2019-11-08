@@ -128,11 +128,13 @@ public class Hero implements HeroPlan {
 
     @Override
     public String toString() { 
-        return String.format("Name: " + _name + '\n' +
+        return String.format("id: " + _id + '\n' +
+                                "Name: " + _name + '\n' +
                                 "XP: " + _xp + '\n' +
                                 "HP: " + _hp + '\n' +
                                 "Level: " + _level + '\n' +
                                 "Attack: " + _attack + '\n' +
+                                "Artifact: " + _artifact + '\n' +
                                 "Defence: " + _defence + '\n' +
                                 "x coordinate: " + _x + '\n' +
                                 "y coordinate: " + _y + '\n'); 

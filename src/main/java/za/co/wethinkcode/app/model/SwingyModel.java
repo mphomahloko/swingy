@@ -1,20 +1,39 @@
 package za.co.wethinkcode.app.model;
 
+import java.sql.SQLException;
+import java.sql.ResultSet;
+
+import za.co.wethinkcode.app.core.PlayerStatDB;
+
 public class SwingyModel {
 	public SwingyModel() {
         return ;
     }
 
-	public void createHero(String hName) {
+	public void createHero(String hName){
 		HeroBuilder oBuilder = new OldHeroBuilder();
         HeroEngineer hEngineer = new HeroEngineer(oBuilder);
 		
         hEngineer.makeHero(hName);
 
-        Hero fHero = hEngineer.getHero();
+        Hero hero = hEngineer.getHero();
+        PlayerStatDB db = PlayerStatDB.getPlayerStats();
 
-        System.out.println("\nHero Built");
-        System.out.println(fHero.toString());
+        try {
+            db.insertInfo(hero);
+            ResultSet res = db.getGeneratedKeys();
+            while(res.next()){
+               hero.setHeroId(Integer.parseInt(res.getString("LAST")));
+            }
+            System.out.println(hero.toString());
+        }catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch(Exception e) {
+            System.out.println("Please choose weather to run in gui or console.");
+        }
+
         return ;
 	}
 }

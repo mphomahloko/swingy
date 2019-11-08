@@ -17,6 +17,7 @@ public class OldHeroBuilder implements HeroBuilder {
         _hero.setHeroLevel(1);
         _hero.setHeroAttack(10);
         _hero.setHeroDefence(5);
+        _hero.setHeroArtifact("");
 
         _hero.setHeroX(0);
         _hero.setHeroY(0);
