@@ -61,21 +61,21 @@ public class SwingyController {
 	private void continueOnConsole() {
 		_theView.continueView();
 		Scanner choice = new Scanner(System.in);
-		int i = 1;
 		try {
 			PlayerStatDB db = PlayerStatDB.getPlayerStats();
 			List<Map<String, String>> stats = db.getUsers();
-
 			for (Map<String,String> m:stats) {
-				System.out.print(i++ + ". ");
- 				for (Map.Entry<String,String> e:m.entrySet()) {
-    				String key = e.getKey();
-    				String value = e.getValue();
-					if (key == "name") {
-    					System.out.println(value);
-					}
-  				}	
+				System.out.println(m.get("id") + ". " + m.get("name"));
 			}
+			int inputChoice = choice.nextInt();
+			for (Map<String,String> m:stats) {
+				if (Integer.parseInt(m.get("id")) == inputChoice) {
+					_map = new GameMap(_theModel.createCustomHero(m));
+				}
+			}
+
+			_map.drawMap();
+			consoleGameLoop();
 
 		}catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -111,7 +111,6 @@ public class SwingyController {
 				 else {
 					 System.out.println("Read the following instructions properly!.");
 				}
-
             	db.updateInfo(_map.hero);
 			}catch (ClassNotFoundException e) {
 				e.printStackTrace();

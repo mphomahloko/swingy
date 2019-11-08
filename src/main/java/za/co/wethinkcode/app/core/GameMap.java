@@ -9,8 +9,6 @@ public class GameMap {
 	public GameMap(Hero hero) {
 		//rough sketch
 		this.hero = hero;
-		this.hero.setHeroX(39 / 2);
-		this.hero.setHeroY(39 / 2);
 		this._map = new String[39][39];
 		_renderMap();
 		return ;

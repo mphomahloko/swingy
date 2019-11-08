@@ -1,5 +1,7 @@
 package za.co.wethinkcode.app.model;
 
+import java.util.Map;
+
     /* types of heros */
 public class OldHeroBuilder implements HeroBuilder {
     private Hero _hero;
@@ -19,10 +21,13 @@ public class OldHeroBuilder implements HeroBuilder {
         _hero.setHeroDefence(5);
         _hero.setHeroArtifact("");
 
-        _hero.setHeroX(0);
-        _hero.setHeroY(0);
+        _hero.setHeroX(39 / 2);
+        _hero.setHeroY(39 / 2);
         return ;
     }
+
+    @Override
+    public void buildCustomHero(Map<String,String> heroDets) { return ; }
 
     @Override
     public Hero getHero() { return _hero; }

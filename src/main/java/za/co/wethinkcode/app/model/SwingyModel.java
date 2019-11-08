@@ -5,6 +5,8 @@ import java.sql.ResultSet;
 
 import za.co.wethinkcode.app.core.PlayerStatDB;
 
+import java.util.Map;
+
 public class SwingyModel {
 	public SwingyModel() {
         return ;
@@ -37,4 +39,13 @@ public class SwingyModel {
 
         return hero;
 	}
+
+    public Hero createCustomHero(Map<String,String> heroDets) {
+		HeroBuilder customHero = new CustomHero();
+        HeroEngineer hEngineer = new HeroEngineer(customHero);
+
+        hEngineer.makeCustomHero(heroDets);
+
+        return hEngineer.getHero();
+    }
 }
