@@ -31,6 +31,7 @@ public class CustomHero implements HeroBuilder {
         _hero.setHeroX(Integer.parseInt(heroDets.get("x")));
         _hero.setHeroY(Integer.parseInt(heroDets.get("y")));
     }
+    
     @Override
     public Hero getHero() { return _hero; }
 }

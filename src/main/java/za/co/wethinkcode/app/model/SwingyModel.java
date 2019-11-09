@@ -13,8 +13,19 @@ public class SwingyModel {
     }
 
     // turn this into a factory
-	public Hero createHero(String hName){
-		HeroBuilder oBuilder = new OldHeroBuilder();
+    private HeroBuilder _createHeroType(String type) {
+        HeroBuilder oBuilder;
+        if (type == "Witch") {
+            oBuilder = new OldHeroBuilder();
+        }
+        else {
+            oBuilder = new OldHeroBuilder();
+        }
+        return oBuilder;
+    }
+    
+	public Hero createHero(String hName, String type) {
+        HeroBuilder oBuilder = _createHeroType(type);
         HeroEngineer hEngineer = new HeroEngineer(oBuilder);
 		
         hEngineer.makeHero(hName);

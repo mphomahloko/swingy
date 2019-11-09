@@ -130,6 +130,7 @@ public class Hero implements HeroPlan {
     public String toString() { 
         return String.format("id: " + _id + '\n' +
                                 "Name: " + _name + '\n' +
+                                "Type: " + _type + '\n' +
                                 "XP: " + _xp + '\n' +
                                 "HP: " + _hp + '\n' +
                                 "Level: " + _level + '\n' +
@@ -139,5 +140,4 @@ public class Hero implements HeroPlan {
                                 "x coordinate: " + _x + '\n' +
                                 "y coordinate: " + _y + '\n'); 
     }
-
 }

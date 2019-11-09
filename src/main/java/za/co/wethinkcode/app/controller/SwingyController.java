@@ -11,8 +11,6 @@ import za.co.wethinkcode.app.core.PlayerStatDB;
 
 import java.sql.SQLException;
 import java.util.List;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 public class SwingyController {
@@ -55,6 +53,7 @@ public class SwingyController {
 		}catch(Exception e) {
 			consoleInterraction();
 		}
+		// choice.close();
 		return ;
 	}
 
@@ -83,11 +82,13 @@ public class SwingyController {
             e.printStackTrace();
         } catch(Exception e) {
             e.printStackTrace();
-        }
+		}
+		// choice.close();
+		return ;
 	}
 
 	private void _buildHero() {
-		_map = new GameMap(_theModel.createHero(_theView.getHeroName()));
+		_map = new GameMap(_theModel.createHero(_theView.getHeroName(), _theView.getHeroType()));
 		return ;
 	}
 
@@ -117,9 +118,12 @@ public class SwingyController {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch(Exception e) {
-				System.out.println("Something went wrong!.");
+				System.out.println("Something went wrong!?.");
+				break ;
 			}
 		}
+		// choice.close();
+		return ;
 	}
 
 	class SwingyListner implements ActionListener {

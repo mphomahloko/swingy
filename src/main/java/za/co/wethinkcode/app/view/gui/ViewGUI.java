@@ -11,12 +11,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 public class ViewGUI extends JFrame implements SwingyView {
-    private JPanel _view;
+    /**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel _view;
 	private JButton _newGame = new JButton("New Game.");
 	private JButton _continue = new JButton("Continue...");
 
 	private JLabel _heroName = new JLabel("Hero Name: ");
 	private JTextField _getHeroName = new JTextField(10);
+	private JLabel _heroType = new JLabel("Hero Type: ");
+	private JTextField _getHeroType = new JTextField(10);
 	private JButton _createHero = new JButton("Create Hero.");
 	
 	public ViewGUI() {
@@ -44,6 +50,8 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_view = new JPanel();
 		_view.add(_heroName);
 		_view.add(_getHeroName);
+		_view.add(_heroType);
+		_view.add(_getHeroType);
 		_view.add(_createHero);
 
 		this.add(_view);
@@ -54,6 +62,11 @@ public class ViewGUI extends JFrame implements SwingyView {
     @Override
 	public String getHeroName() {
 		return _getHeroName.getText();
+	}
+
+    @Override
+	public String getHeroType() {
+		return _getHeroType.getText();
 	}
 
 	public void addPlayersInterraction(ActionListener listensForAction) {

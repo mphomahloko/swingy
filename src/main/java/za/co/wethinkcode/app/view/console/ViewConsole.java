@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 public class ViewConsole implements SwingyView {
     private String _heroName;
+    private String _heroType;
     
     public ViewConsole() {
 		return ;
@@ -21,15 +22,23 @@ public class ViewConsole implements SwingyView {
 
     @Override
 	public void newGameView() {
-		System.out.print("Enter Hero Name: ");
         Scanner prompt = new Scanner(System.in);
+		System.out.print("Enter Hero Name: ");
         _heroName = prompt.nextLine();
+        System.out.print("Enter Hero Type: ");
+        _heroType = prompt.nextLine();
+        
         return ;
 	}
 
     @Override
     public String getHeroName() {
         return _heroName;
+    }
+
+    @Override
+    public String getHeroType() {
+        return _heroType;
     }
 
     @Override
