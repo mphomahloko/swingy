@@ -53,26 +53,31 @@ public class SwingyController {
 		}catch(Exception e) {
 			consoleInterraction();
 		}
-		// choice.close();
 		return ;
 	}
 
 	private void continueOnConsole() {
 		_theView.continueView();
 		Scanner choice = new Scanner(System.in);
+		
 		try {
 			PlayerStatDB db = PlayerStatDB.getPlayerStats();
 			List<Map<String, String>> stats = db.getUsers();
+			if (stats.size() == 0) {
+				_theView.clearView();
+				System.out.println("No Hero's Exist yet CREATE A HERO FIRST");
+				consoleInterraction();
+			}
 			for (Map<String,String> m:stats) {
 				System.out.println(m.get("id") + ". " + m.get("name"));
 			}
+			System.out.println("Choose your player your Player");
 			int inputChoice = choice.nextInt();
 			for (Map<String,String> m:stats) {
 				if (Integer.parseInt(m.get("id")) == inputChoice) {
 					_map = new GameMap(_theModel.createCustomHero(m));
 				}
 			}
-
 			_map.drawMap();
 			consoleGameLoop();
 
@@ -83,7 +88,6 @@ public class SwingyController {
         } catch(Exception e) {
             e.printStackTrace();
 		}
-		// choice.close();
 		return ;
 	}
 
@@ -122,7 +126,6 @@ public class SwingyController {
 				break ;
 			}
 		}
-		// choice.close();
 		return ;
 	}
 
