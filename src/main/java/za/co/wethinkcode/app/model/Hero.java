@@ -1,6 +1,11 @@
 package za.co.wethinkcode.app.model;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Hero implements HeroPlan {
+    @NotNull
+    @Size(min = 3, max = 15)
     private String _name;
     private Integer _id;
 

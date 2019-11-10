@@ -3,15 +3,25 @@ package za.co.wethinkcode.app.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Scanner;
+import java.util.Set;
+
+import javax.validation.ValidatorFactory;
+import javax.validation.Validator;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
 
 import za.co.wethinkcode.app.core.GameMap;
 import za.co.wethinkcode.app.model.SwingyModel;
+import za.co.wethinkcode.app.model.Hero;
 import za.co.wethinkcode.app.view.SwingyView;
 import za.co.wethinkcode.app.core.PlayerStatDB;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
+
+import static org.hibernate.internal.util.collections.CollectionHelper.isEmpty;
 
 public class SwingyController {
 	private SwingyView _theView;
@@ -71,7 +81,7 @@ public class SwingyController {
 			for (Map<String,String> m:stats) {
 				System.out.println(m.get("id") + ". " + m.get("name"));
 			}
-			System.out.println("Choose your player your Player");
+			System.out.println("Choose your player");
 			int inputChoice = choice.nextInt();
 			for (Map<String,String> m:stats) {
 				if (Integer.parseInt(m.get("id")) == inputChoice) {
@@ -92,7 +102,32 @@ public class SwingyController {
 	}
 
 	private void _buildHero() {
-		_map = new GameMap(_theModel.createHero(_theView.getHeroName(), _theView.getHeroType()));
+		PlayerStatDB db = PlayerStatDB.getPlayerStats();
+		Hero hero = _theModel.createHero(_theView.getHeroName(), _theView.getHeroType());
+        try {
+			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+			Validator validator = (Validator) factory.getValidator();
+			Set<ConstraintViolation<Hero>> constraintViolations = validator.validate(hero);
+		if (!isEmpty(constraintViolations))
+		{
+				System.out.printf( "%s %s\n", constraintViolations.iterator().next().getConstraintDescriptor(),
+						constraintViolations.iterator().next().getMessage());
+				return ;
+		}
+            db.insertInfo(hero);
+            ResultSet res = db.getGeneratedKeys();
+            while(res.next()) {
+               hero.setHeroId(Integer.parseInt(res.getString("LAST")));
+            }
+			_map = new GameMap(hero);
+        }catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
 		return ;
 	}
 
@@ -122,7 +157,7 @@ public class SwingyController {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch(Exception e) {
-				System.out.println("Something went wrong!?.");
+				System.out.println("You win.");
 				break ;
 			}
 		}

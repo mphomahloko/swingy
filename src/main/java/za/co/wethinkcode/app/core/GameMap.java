@@ -24,6 +24,7 @@ public class GameMap {
 		return ;
 	}
 
+	// Algorithm to fight I guess
 	public void placePlayer() {
 		this._map[hero.getHeroY()][hero.getHeroX()] = "P";
 		return ;
