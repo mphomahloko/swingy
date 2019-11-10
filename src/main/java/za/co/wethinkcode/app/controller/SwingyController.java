@@ -174,6 +174,10 @@ public class SwingyController {
 			if (e.getActionCommand().equals("Create Hero.")) {
 				_buildHero();
 			}
+			if (e.getActionCommand().equals("Continue ...")) {
+				_theView.clearView();
+				_theView.continueView();
+			}
 			return ;
 		}
 	}

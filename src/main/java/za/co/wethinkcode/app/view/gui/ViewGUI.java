@@ -17,7 +17,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 	private static final long serialVersionUID = 1L;
 	private JPanel _view;
 	private JButton _newGame = new JButton("New Game.");
-	private JButton _continue = new JButton("Continue...");
+	private JButton _continue = new JButton("Continue ...");
 
 	private JLabel _heroName = new JLabel("Hero Name: ");
 	private JTextField _getHeroName = new JTextField(10);
@@ -58,7 +58,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 		this.setVisible(true);
 		return ;
 	}
-	
+
     @Override
 	public String getHeroName() {
 		return _getHeroName.getText();
@@ -77,7 +77,10 @@ public class ViewGUI extends JFrame implements SwingyView {
 	}
 
 	@Override
-	public void continueView(){ return ;}
+	public void continueView() {
+		_view = new JPanel();
+		return ;
+	}
 
     @Override
 	public void clearView() {
