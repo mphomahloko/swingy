@@ -103,6 +103,7 @@ public class SwingyController {
 
 	private void _buildHero() {
 		PlayerStatDB db = PlayerStatDB.getPlayerStats();
+		System.out.print(_theView.getHeroType());
 		Hero hero = _theModel.createHero(_theView.getHeroName(), _theView.getHeroType());
         try {
 			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
@@ -172,6 +173,8 @@ public class SwingyController {
 				_theView.newGameView();
 			}
 			if (e.getActionCommand().equals("Create Hero.")) {
+				_theView.clearView();
+				_theView.gameView();
 				_buildHero();
 			}
 			if (e.getActionCommand().equals("Continue ...")) {

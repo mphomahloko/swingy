@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
 public class ViewGUI extends JFrame implements SwingyView {
@@ -22,8 +24,15 @@ public class ViewGUI extends JFrame implements SwingyView {
 	private JLabel _heroName = new JLabel("Hero Name: ");
 	private JTextField _getHeroName = new JTextField(10);
 	private JLabel _heroType = new JLabel("Hero Type: ");
-	private JTextField _getHeroType = new JTextField(10);
 	private JButton _createHero = new JButton("Create Hero.");
+	private String[] hero  = {"Swordman", "Knight", "hunter"};
+	private JComboBox cbHero = new JComboBox<String>(hero);
+	private JTextArea _txtDisplay = new JTextArea(100, 100);
+	private JTextArea _txtPlayerStats = new JTextArea(50, 50);
+	private JButton _btnUp = new JButton("UP");
+	private JButton _btnDown = new JButton("DOWN");
+	private JButton _btnLeft = new JButton("LEFT");
+	private JButton _btnRight = new JButton("RIGHT");
 	
 	public ViewGUI() {
 		super("Swingy Game.");
@@ -51,7 +60,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_view.add(_heroName);
 		_view.add(_getHeroName);
 		_view.add(_heroType);
-		_view.add(_getHeroType);
+		_view.add(cbHero);
 		_view.add(_createHero);
 
 		this.add(_view);
@@ -66,7 +75,8 @@ public class ViewGUI extends JFrame implements SwingyView {
 
     @Override
 	public String getHeroType() {
-		return _getHeroType.getText();
+		int selectedIndex = cbHero.getSelectedIndex();
+		return hero[selectedIndex];
 	}
 
 	public void addPlayersInterraction(ActionListener listensForAction) {
@@ -82,6 +92,30 @@ public class ViewGUI extends JFrame implements SwingyView {
 		return ;
 	}
 
+	@Override
+	public void gameView() {
+		_view = new JPanel();
+		_view.setLayout(null);
+		_view.add(_txtDisplay);
+		_txtDisplay.setEditable(false);
+		_txtDisplay.setBounds(50, 50, 300, 300);
+		_view.add(_txtPlayerStats);
+		_txtPlayerStats.setEditable(false);
+		_txtPlayerStats.setBounds(400, 50, 150, 150);
+		_view.add(_btnUp);
+		_btnUp.setBounds(50, 500, 100,30);
+		_view.add(_btnDown);
+		_btnDown.setBounds(150, 500, 100, 30);
+		_view.add(_btnLeft);
+		_btnLeft.setBounds(250, 500, 100, 30);
+		_view.add(_btnRight);
+		_btnRight.setBounds(350, 500, 100, 30);
+
+		this.add(_view);
+		this.setVisible(true);
+		return ;
+	}
+
     @Override
 	public void clearView() {
 		this.remove(_view);
@@ -89,4 +123,5 @@ public class ViewGUI extends JFrame implements SwingyView {
 		this.repaint();
 		return ;
 	}
+
 }
