@@ -14,6 +14,7 @@ import za.co.wethinkcode.app.core.GameMap;
 import za.co.wethinkcode.app.model.SwingyModel;
 import za.co.wethinkcode.app.model.Hero;
 import za.co.wethinkcode.app.view.SwingyView;
+import za.co.wethinkcode.app.view.gui.ViewGUI;
 import za.co.wethinkcode.app.core.PlayerStatDB;
 
 import java.sql.ResultSet;
@@ -172,6 +173,27 @@ public class SwingyController {
 				_theView.clearView();
 				_theView.newGameView();
 			}
+			if (e.getActionCommand().equals("Continue")) {
+				_theView.clearView();
+				ViewGUI v = (ViewGUI)_theView;
+				try {
+					PlayerStatDB db = PlayerStatDB.getPlayerStats();
+					List<Map<String, String>> stats = db.getUsers();
+					for (Map<String,String> m:stats) {
+						if (Integer.parseInt(m.get("id")) == v.selectedHero()) {
+							_map = new GameMap(_theModel.createCustomHero(m), _theView);
+						}
+					}
+				}catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} catch(Exception e1) {
+					e1.printStackTrace();
+				}
+				_theView.gameView();
+				_theView.drawMap(_map.map);
+			}
 			if (e.getActionCommand().equals("Create Hero.")) {
 				_theView.clearView();
 				_theView.gameView();
@@ -180,19 +202,65 @@ public class SwingyController {
 			}
 			if (e.getActionCommand().equals("Continue ...")) {
 				_theView.clearView();
+				try {
+					PlayerStatDB db = PlayerStatDB.getPlayerStats();
+					List<Map<String, String>> stats = db.getUsers();
+					if (stats.size() == 0) {
+						_theView.newGameView();
+						return ;
+					}
+				}catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				} catch(Exception e1) {
+					e1.printStackTrace();
+				}
 				_theView.continueView();
 			}
 			if (e.getActionCommand().equals("UP")) {
 				_map.moveUp();
+				try {
+					PlayerStatDB db = PlayerStatDB.getPlayerStats();
+					db.updateInfo(_map.hero);
+				}catch (ClassNotFoundException e1) {
+						e1.printStackTrace();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 			if (e.getActionCommand().equals("DOWN")) {
 				_map.moveDown();
+				try {
+					PlayerStatDB db = PlayerStatDB.getPlayerStats();
+					db.updateInfo(_map.hero);
+				}catch (ClassNotFoundException e1) {
+						e1.printStackTrace();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 			if (e.getActionCommand().equals("LEFT")) {
 				_map.moveLeft();
+				try {
+					PlayerStatDB db = PlayerStatDB.getPlayerStats();
+					db.updateInfo(_map.hero);
+				}catch (ClassNotFoundException e1) {
+						e1.printStackTrace();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 			if (e.getActionCommand().equals("RIGHT")) {
 				_map.moveRight();
+				try {
+					PlayerStatDB db = PlayerStatDB.getPlayerStats();
+					db.updateInfo(_map.hero);
+				}catch (ClassNotFoundException e1) {
+						e1.printStackTrace();
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 			}
 			return ;
 		}
