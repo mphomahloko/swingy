@@ -1,23 +1,26 @@
 package za.co.wethinkcode.app.core;
 
 import za.co.wethinkcode.app.model.Hero;
+import za.co.wethinkcode.app.view.SwingyView;
 
 public class GameMap {
-	private String [][] _map;
+	public String [][] map;
+	public SwingyView view;
 	public Hero hero;
 
-	public GameMap(Hero hero) {
-		//rough sketch
+	public GameMap(Hero hero, SwingyView view) {
 		this.hero = hero;
-		this._map = new String[39][39];
+		//rough sketch
+		this.map = new String[20][20];
+		this.view = view;
 		_renderMap();
 		return ;
 	}
 	
 	private void _renderMap() {
-		for (int i = 0; i < this._map.length; i += 1) {
-			for (int j = 0; j < this._map.length; j += 1) {
-				this._map[i][j] = ".";
+		for (int i = 0; i < this.map.length; i += 1) {
+			for (int j = 0; j < this.map.length; j += 1) {
+				this.map[i][j] = ".";
 			}
 		}
 		placePlayer();
@@ -26,46 +29,35 @@ public class GameMap {
 
 	// Algorithm to fight I guess
 	public void placePlayer() {
-		this._map[hero.getHeroY()][hero.getHeroX()] = "P";
+		this.map[hero.getHeroY()][hero.getHeroX()] = "P";
 		return ;
 	}
 
 	public void moveRight() {
 		hero.setHeroX(hero.getHeroX() + 1);
 		_renderMap();
-		drawMap();
+		view.drawMap(map);
 		return ;
 	}
 
 	public void moveLeft() {
 		hero.setHeroX(hero.getHeroX() - 1);
 		_renderMap();
-		drawMap();
+		view.drawMap(map);
 		return ;
 	}
 
 	public void moveDown() {
 		hero.setHeroY(hero.getHeroY() + 1);
 		_renderMap();
-		drawMap();
+		view.drawMap(map);
 		return ;
 	}
 
 	public void moveUp() {
 		hero.setHeroY(hero.getHeroY() - 1);
 		_renderMap();
-		drawMap();
-		return ;
-	}
-
-	// place in view
-	public void drawMap() {
-		for (int i = 0; i < this._map.length; i += 1) {
-			for (int j = 0; j < this._map.length; j += 1) {
-				System.out.print(this._map[i][j]);
-			}
-			System.out.println();
-		}
+		view.drawMap(map);
 		return ;
 	}
 }

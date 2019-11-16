@@ -79,10 +79,15 @@ public class ViewGUI extends JFrame implements SwingyView {
 		return hero[selectedIndex];
 	}
 
+	@Override
 	public void addPlayersInterraction(ActionListener listensForAction) {
 		_newGame.addActionListener(listensForAction);
 		_continue.addActionListener(listensForAction);
 		_createHero.addActionListener(listensForAction);
+		_btnUp.addActionListener(listensForAction);
+		_btnDown.addActionListener(listensForAction);
+		_btnLeft.addActionListener(listensForAction);
+		_btnRight.addActionListener(listensForAction);
 		return ;
 	}
 
@@ -113,6 +118,18 @@ public class ViewGUI extends JFrame implements SwingyView {
 
 		this.add(_view);
 		this.setVisible(true);
+		return ;
+	}
+
+	@Override
+    public void drawMap(String [][] map) {
+		_txtDisplay.setText("");
+		for (int i = 0; i < map.length; i += 1) {
+			for (int j = 0; j < map.length; j += 1) {
+				_txtDisplay.append(String.valueOf(map[i][j]));
+			}
+			_txtDisplay.append("\n\r");
+		}
 		return ;
 	}
 

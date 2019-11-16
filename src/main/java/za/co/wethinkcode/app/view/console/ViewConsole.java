@@ -52,6 +52,17 @@ public class ViewConsole implements SwingyView {
 		System.out.print("\033[H\033[2J");
 		System.out.flush();
     }
+
+    @Override
+    public void drawMap(String [][] map) {
+		for (int i = 0; i < map.length; i += 1) {
+			for (int j = 0; j < map.length; j += 1) {
+				System.out.print(map[i][j]);
+			}
+			System.out.println();
+		}
+		return ;
+	}
     
     @Override
 	public void gameView() { return ; }

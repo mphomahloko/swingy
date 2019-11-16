@@ -51,7 +51,7 @@ public class SwingyController {
 				_theView.clearView();
 				_theView.newGameView();
 				_buildHero();
-				_map.drawMap();
+				_theView.drawMap(_map.map);
 				consoleGameLoop();
 			} else if (inputChoice == 2) {
 				_theView.clearView();
@@ -85,10 +85,10 @@ public class SwingyController {
 			int inputChoice = choice.nextInt();
 			for (Map<String,String> m:stats) {
 				if (Integer.parseInt(m.get("id")) == inputChoice) {
-					_map = new GameMap(_theModel.createCustomHero(m));
+					_map = new GameMap(_theModel.createCustomHero(m), _theView);
 				}
 			}
-			_map.drawMap();
+			_theView.drawMap(_map.map);
 			consoleGameLoop();
 
 		}catch (ClassNotFoundException e) {
@@ -120,7 +120,7 @@ public class SwingyController {
             while(res.next()) {
                hero.setHeroId(Integer.parseInt(res.getString("LAST")));
             }
-			_map = new GameMap(hero);
+			_map = new GameMap(hero, _theView);
         }catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (SQLException e) {
@@ -176,10 +176,23 @@ public class SwingyController {
 				_theView.clearView();
 				_theView.gameView();
 				_buildHero();
+				_theView.drawMap(_map.map);
 			}
 			if (e.getActionCommand().equals("Continue ...")) {
 				_theView.clearView();
 				_theView.continueView();
+			}
+			if (e.getActionCommand().equals("UP")) {
+				_map.moveUp();
+			}
+			if (e.getActionCommand().equals("DOWN")) {
+				_map.moveDown();
+			}
+			if (e.getActionCommand().equals("LEFT")) {
+				_map.moveLeft();
+			}
+			if (e.getActionCommand().equals("RIGHT")) {
+				_map.moveRight();
 			}
 			return ;
 		}
