@@ -25,9 +25,13 @@ public class ViewConsole implements SwingyView {
         Scanner prompt = new Scanner(System.in);
 		System.out.print("Enter Hero Name: ");
         _heroName = prompt.nextLine();
-        System.out.print("Enter Hero Type: ");
-        _heroType = prompt.nextLine();
-        
+        System.out.println("Select Hero Type: \n" +
+                            "1. Witch");
+
+        int inputChoice = prompt.nextInt();
+        if (inputChoice == 1)
+            _heroType = "Witch";
+        else _heroType = "OtherTypes";
         return ;
 	}
 
