@@ -29,7 +29,14 @@ public class GameMap {
 
 	// Algorithm to fight I guess
 	public void placePlayer() {
-		this.map[hero.getHeroY()][hero.getHeroX()] = "P";
+		if (this.map.length <= hero.getHeroY() || this.map[0].length <= hero.getHeroX()
+			|| hero.getHeroY() < 0 || hero.getHeroX() < 0)
+		{
+			// implement an alert for each view
+				System.out.println("You Win!.");
+		} else {
+			this.map[hero.getHeroY()][hero.getHeroX()] = "P";
+		}
 		return ;
 	}
 
