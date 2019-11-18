@@ -163,6 +163,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 			}
 			_txtDisplay.append("\n\r");
 		}
+		// add palyer stats
 		return ;
 	}
 
