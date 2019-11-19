@@ -1,5 +1,7 @@
 package za.co.wethinkcode.app.core;
 
+import javax.swing.JOptionPane;
+
 import za.co.wethinkcode.app.model.Hero;
 import za.co.wethinkcode.app.view.SwingyView;
 
@@ -34,6 +36,12 @@ public class GameMap {
 		{
 			// implement an alert for each view
 				System.out.println("You Win!.");
+				JOptionPane.showMessageDialog(null, "You Win!.");
+				hero.setHeroX(20 / 2);
+				hero.setHeroY(20 / 2);
+				placePlayer();
+				view.clearView();
+				view.iniView();
 		} else {
 			this.map[hero.getHeroY()][hero.getHeroX()] = "P";
 		}

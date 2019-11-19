@@ -195,9 +195,9 @@ public class SwingyController {
 				_theView.drawMap(_map.map);
 			}
 			if (e.getActionCommand().equals("Create Hero.")) {
+				_buildHero();
 				_theView.clearView();
 				_theView.gameView();
-				_buildHero();
 				_theView.drawMap(_map.map);
 			}
 			if (e.getActionCommand().equals("Continue ...")) {
