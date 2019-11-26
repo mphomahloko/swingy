@@ -6,7 +6,9 @@ import java.util.Scanner;
 import java.util.Set;
 
 import javax.validation.ValidatorFactory;
+
 import javax.validation.Validator;
+import javax.swing.JOptionPane;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 
@@ -273,6 +275,11 @@ public class SwingyController {
 			if (e.getActionCommand().equals("Back")) {
 				_theView.clearView();
 				_theView.iniView();
+			}
+			if (e.getActionCommand().equals("Quit")) {
+				int opt = JOptionPane.showConfirmDialog(null, "Quit Game?");
+				if (opt == 0)
+					System.exit(1);
 			}
 			return ;
 		}
