@@ -37,7 +37,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 	private JButton _Run = new JButton("Run");
 	private JButton _Fight = new JButton("Fight");
 	private JButton _Quit = new JButton("Quit");
-	private JButton _Back = new JButton("Back");
+	private JButton _back = new JButton("Back");
 
 
 	private JLabel _heroName = new JLabel("Hero Name: ");
@@ -92,8 +92,8 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_view.add(_createHero);
 		_createHero.setBounds(100, 100, 120, 30);
 
-		_view.add(_Back);
-		_Back.setBounds(210, 100, 90, 30);
+		_view.add(_back);
+		_back.setBounds(210, 100, 90, 30);
 
 		this.add(_view);
 		this.setSize(320, 170);
@@ -125,6 +125,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_btnLeft.addActionListener(listensForAction);
 		_btnRight.addActionListener(listensForAction);
 		_cont.addActionListener(listensForAction);
+		_back.addActionListener(listensForAction);
 		return ;
 	}
 
@@ -162,8 +163,8 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_view.add(_cont);
 		_cont.setBounds(105, 85, 100, 30);
 
-		_view.add(_Back);
-		_Back.setBounds(195, 85, 100, 30);
+		_view.add(_back);
+		_back.setBounds(195, 85, 100, 30);
 
 		this.add(_view);
 		this.setSize(300, 150);
@@ -221,8 +222,8 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_Fight.setBounds(510, 250, 70, 30);
 		_Fight.setEnabled(false);
 		
-		_view.add(_Back);
-		_Back.setBounds(490, 390, 100, 30);
+		_view.add(_back);
+		_back.setBounds(490, 390, 100, 30);
 
 
 		this.add(_view);

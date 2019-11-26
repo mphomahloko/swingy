@@ -262,6 +262,10 @@ public class SwingyController {
 					e1.printStackTrace();
 				}
 			}
+			if (e.getActionCommand().equals("Back")) {
+				_theView.clearView();
+				_theView.iniView();
+			}
 			return ;
 		}
 	}
