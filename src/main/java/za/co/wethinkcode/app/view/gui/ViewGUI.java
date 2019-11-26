@@ -12,6 +12,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
@@ -243,6 +244,12 @@ public class ViewGUI extends JFrame implements SwingyView {
 			_txtDisplay.append("\n\r");
 		}
 		// add palyer stats
+		return ;
+	}
+
+	@Override
+	public void alertMsg(String msg) {
+		JOptionPane.showMessageDialog(null, msg);
 		return ;
 	}
 

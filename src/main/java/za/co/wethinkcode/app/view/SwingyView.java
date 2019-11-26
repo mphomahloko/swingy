@@ -14,6 +14,7 @@ public interface SwingyView {
 	public void continueView();
 	public String getHeroName();
 	public String getHeroType();
+	public void	alertMsg(String msg);
 	public void drawMap(String [][] map);
 	public void addPlayersInterraction(ActionListener listensForAction);
 }
