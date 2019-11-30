@@ -1,4 +1,0 @@
-mvn -B archetype:generate \
-  -DarchetypeGroupId=org.apache.maven.archetypes \
-  -DgroupId=za.co.wethinkcode.app \
-  -DartifactId=swingy
