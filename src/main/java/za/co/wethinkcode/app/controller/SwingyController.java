@@ -6,7 +6,9 @@ import java.util.Scanner;
 import java.util.Set;
 
 import javax.validation.ValidatorFactory;
+
 import javax.validation.Validator;
+import javax.swing.JOptionPane;
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 
@@ -104,18 +106,16 @@ public class SwingyController {
 
 	private void _buildHero() {
 		PlayerStatDB db = PlayerStatDB.getPlayerStats();
-		System.out.print(_theView.getHeroType());
 		Hero hero = _theModel.createHero(_theView.getHeroName(), _theView.getHeroType());
         try {
 			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 			Validator validator = (Validator) factory.getValidator();
 			Set<ConstraintViolation<Hero>> constraintViolations = validator.validate(hero);
-		if (!isEmpty(constraintViolations))
-		{
-				System.out.printf( "%s %s\n", constraintViolations.iterator().next().getConstraintDescriptor(),
-						constraintViolations.iterator().next().getMessage());
+			if (!isEmpty(constraintViolations))
+			{
+				_theView.alertMsg("Your Hero name has to have a min of three letters.");
 				return ;
-		}
+			}
             db.insertInfo(hero);
             ResultSet res = db.getGeneratedKeys();
             while(res.next()) {
@@ -127,6 +127,7 @@ public class SwingyController {
         } catch (SQLException e) {
             e.printStackTrace();
         } catch(Exception e) {
+			System.out.println("Hero Has no name");
             e.printStackTrace();
         }
 
@@ -195,7 +196,16 @@ public class SwingyController {
 				_theView.drawMap(_map.map);
 			}
 			if (e.getActionCommand().equals("Create Hero.")) {
-				_buildHero();
+				try {
+					_buildHero();
+					if (_map.hero == null) {
+						System.out.println();
+					}
+				} catch(Exception e1) {
+					_theView.clearView();
+					_theView.newGameView();
+					return ;
+				}
 				_theView.clearView();
 				_theView.gameView();
 				_theView.drawMap(_map.map);
@@ -261,6 +271,15 @@ public class SwingyController {
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
+			}
+			if (e.getActionCommand().equals("Back")) {
+				_theView.clearView();
+				_theView.iniView();
+			}
+			if (e.getActionCommand().equals("Quit")) {
+				int opt = JOptionPane.showConfirmDialog(null, "Quit Game?");
+				if (opt == 0)
+					System.exit(1);
 			}
 			return ;
 		}

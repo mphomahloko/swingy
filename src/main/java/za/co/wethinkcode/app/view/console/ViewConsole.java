@@ -66,6 +66,12 @@ public class ViewConsole implements SwingyView {
 			System.out.println();
 		}
 		return ;
+    }
+
+    @Override
+	public void alertMsg(String msg) {
+		System.out.println(msg);
+		return ;
 	}
     
     @Override
