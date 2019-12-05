@@ -7,6 +7,7 @@ public class GameMap {
 	public String [][] map;
 	public SwingyView view;
 	public Hero hero;
+	public boolean gameState;
 
 	public GameMap(Hero hero, SwingyView view) {
 		this.hero = hero;
@@ -32,7 +33,7 @@ public class GameMap {
 		if (this.map.length <= hero.getHeroY() || this.map[0].length <= hero.getHeroX()
 			|| hero.getHeroY() < 0 || hero.getHeroX() < 0)
 		{
-			// implement an alert for each view
+			gameState = false;
 			view.alertMsg("You Win");
 			hero.setHeroX(20 / 2);
 			hero.setHeroY(20 / 2);

@@ -2,15 +2,6 @@ package za.co.wethinkcode.app.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Scanner;
-import java.util.Set;
-
-import javax.validation.ValidatorFactory;
-
-import javax.validation.Validator;
-import javax.swing.JOptionPane;
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
 
 import za.co.wethinkcode.app.core.GameMap;
 import za.co.wethinkcode.app.model.SwingyModel;
@@ -19,12 +10,22 @@ import za.co.wethinkcode.app.view.SwingyView;
 import za.co.wethinkcode.app.view.gui.ViewGUI;
 import za.co.wethinkcode.app.core.PlayerStatDB;
 
+import static org.hibernate.internal.util.collections.CollectionHelper.isEmpty;
+
+import javax.swing.JOptionPane;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
 
-import static org.hibernate.internal.util.collections.CollectionHelper.isEmpty;
+import java.util.Map;
+import java.util.Set;
+import java.util.List;
+import java.util.Scanner;
+
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
 
 public class SwingyController {
 	private SwingyView _theView;
@@ -135,35 +136,42 @@ public class SwingyController {
 	}
 
 	private void consoleGameLoop() {
-		Scanner choice = new Scanner(System.in);
+		Scanner choice;
 		PlayerStatDB db = PlayerStatDB.getPlayerStats();
+		_map.gameState = true;
 
-		while (true) {
+		while (_map.gameState) {
 			System.out.println("1.move up\n2.move down\n3.move left\n4.move right");
 			try{
-				int inputChoice = choice.nextInt();
-				if (inputChoice == 1) {
-					_map.moveUp();
-				} else if (inputChoice == 2) {
-					_map.moveDown();
-				}else if (inputChoice == 3) {
-					_map.moveLeft();
-				}else if (inputChoice == 4) {
-					_map.moveRight();
-				}
-				 else {
-					 System.out.println("Read the following instructions properly!.");
-				}
-            	db.updateInfo(_map.hero);
+				choice = new Scanner(System.in);
+				if (choice.hasNextInt()) {
+					int inputChoice = choice.nextInt();
+					if (inputChoice == 1) {
+						_map.moveUp();
+					} else if (inputChoice == 2) {
+						_map.moveDown();
+					}else if (inputChoice == 3) {
+						_map.moveLeft();
+					}else if (inputChoice == 4) {
+						_map.moveRight();
+					}
+					 else {
+						 System.out.println("Read the following instructions properly!.");
+					}
+					db.updateInfo(_map.hero);
+				}else {
+					System.out.println("Read the following instructions properly!.");
+			   }
 			}catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch(Exception e) {
-				System.out.println("You win.");
-				break ;
+				System.out.println("Not a number read instructions properly"); ;
 			}
 		}
+		_theView.alertMsg("You Win");
+		consoleInterraction();	
 		return ;
 	}
 
