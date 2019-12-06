@@ -11,11 +11,12 @@ public class GameMap {
 
 	public GameMap(Hero hero, SwingyView view) {
 		this.hero = hero;
+
 		// rough sketch
 		this.map = new String[20][20];
 		this.view = view;
 		_renderMap();
-		return;
+		return ;
 	}
 
 	private void _renderMap() {
@@ -26,7 +27,7 @@ public class GameMap {
 		}
 		this.map[6][10] = "E";
 		placePlayer();
-		return;
+		return ;
 	}
 
 	// Algorithm to fight I guess
@@ -52,27 +53,27 @@ public class GameMap {
 		hero.setHeroX(hero.getHeroX() + 1);
 		_renderMap();
 		view.drawMap(map);
-		return;
+		return ;
 	}
 
 	public void moveLeft() {
 		hero.setHeroX(hero.getHeroX() - 1);
 		_renderMap();
 		view.drawMap(map);
-		return;
+		return ;
 	}
 
 	public void moveDown() {
 		hero.setHeroY(hero.getHeroY() + 1);
 		_renderMap();
 		view.drawMap(map);
-		return;
+		return ;
 	}
 
 	public void moveUp() {
 		hero.setHeroY(hero.getHeroY() - 1);
 		_renderMap();
 		view.drawMap(map);
-		return;
+		return ;
 	}
 }
