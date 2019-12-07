@@ -8,15 +8,15 @@ import java.util.Map;
 import za.co.wethinkcode.app.core.PlayerStatDB;
 import za.co.wethinkcode.app.view.SwingyView;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.JOptionPane;
+import javax.swing.BorderFactory;
 
 import java.awt.Color;
 import java.awt.GridLayout;
