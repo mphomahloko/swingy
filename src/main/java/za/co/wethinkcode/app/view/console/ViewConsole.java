@@ -1,8 +1,9 @@
 package za.co.wethinkcode.app.view.console;
 
+import java.awt.event.ActionListener;
+
 import za.co.wethinkcode.app.view.SwingyView;
 
-import java.awt.event.ActionListener;
 import java.util.Scanner;
 
 public class ViewConsole implements SwingyView {

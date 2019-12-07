@@ -1,12 +1,12 @@
 package za.co.wethinkcode.app.core;
 
-import java.sql.SQLException;
-
 import za.co.wethinkcode.app.controller.SwingyController;
 import za.co.wethinkcode.app.model.SwingyModel;
 import za.co.wethinkcode.app.view.SwingyView;
 import za.co.wethinkcode.app.view.gui.ViewGUI;
 import za.co.wethinkcode.app.view.console.ViewConsole;
+
+import java.sql.SQLException;
 
 public class App {
     public static void main(String [] args) {
