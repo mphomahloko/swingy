@@ -13,7 +13,6 @@ import java.util.List;
 
 import java.sql.SQLException;
 
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -51,21 +50,21 @@ public class ViewGUI extends JFrame implements SwingyView {
 
 	// hero type ...
 	private JLabel _heroType = new JLabel("Hero Type: ");
-	private String[] hero  = {"Swordman", "Knight", "hunter"};
+	private String[] hero = { "Swordman", "Knight", "hunter" };
 	private JComboBox cbHero = new JComboBox<String>(hero);
 
 	// exsiting hero's ...
-	private  JComboBox Heros = new JComboBox<String>();
+	private JComboBox Heros = new JComboBox<String>();
 
 	// game view ...
 	private JTextArea _txtDisplay = new JTextArea(100, 100);
 
 	// player statistics
 	private JTextArea _txtPlayerStats = new JTextArea(50, 50);
-	
+
 	public ViewGUI() {
 		super("Swingy Game.");
-		return ;
+		return;
 	}
 
 	@Override
@@ -75,14 +74,14 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_view.add(_newGame);
 		_view.add(_continue);
 		_view.add(_quit);
-		
+
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		this.setSize(200, 200);
 		this.setLocationRelativeTo(null);
 		this.add(_view);
 		this.setVisible(true);
-		return ;
+		return;
 	}
 
 	@Override
@@ -111,20 +110,20 @@ public class ViewGUI extends JFrame implements SwingyView {
 		this.add(_view);
 		this.setSize(320, 170);
 		this.setVisible(true);
-		return ;
+		return;
 	}
-	
+
 	@Override
 	public String getHeroName() {
 		return _getHeroName.getText();
 	}
-	
+
 	@Override
 	public String getHeroType() {
 		return hero[cbHero.getSelectedIndex()];
 	}
 
-	public int selectedHero(){
+	public int selectedHero() {
 		return Heros.getSelectedIndex() + 1;
 	}
 
@@ -140,11 +139,15 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_cont.addActionListener(listensForAction);
 		_back.addActionListener(listensForAction);
 		_quit.addActionListener(listensForAction);
-		return ;
+		return;
 	}
 
-	private Object makeObj(final String item)  {
-		return new Object() { public String toString() { return item; } };
+	private Object makeObj(final String item) {
+		return new Object() {
+			public String toString() {
+				return item;
+			}
+		};
 	}
 
 	@Override
@@ -152,21 +155,21 @@ public class ViewGUI extends JFrame implements SwingyView {
 		try {
 			PlayerStatDB db = PlayerStatDB.getPlayerStats();
 			List<Map<String, String>> stats = db.getUsers();
-			for (Map<String,String> m:stats) {
+			for (Map<String, String> m : stats) {
 				Heros.addItem(makeObj(m.get("name")));
 			}
-			
-		}catch (ClassNotFoundException e1) {
+
+		} catch (ClassNotFoundException e1) {
 			e1.printStackTrace();
 		} catch (SQLException e1) {
 			e1.printStackTrace();
-		} catch(Exception e1) {
+		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
 
 		_view = new JPanel();
 		_view.setLayout(null);
-		
+
 		JLabel conViewtLabel = new JLabel("Select a Hero: ");
 		_view.add(conViewtLabel);
 		conViewtLabel.setBounds(10, 20, 100, 20);
@@ -183,7 +186,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 		this.add(_view);
 		this.setSize(300, 150);
 		this.setVisible(true);
-		return ;
+		return;
 	}
 
 	@Override
@@ -202,31 +205,27 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_PanelA.setBorder(BorderFactory.createTitledBorder("Game Display"));
 		_view.add(_PanelA);
 
-
 		_PanelB = new JPanel();
 		_PanelB.setLayout(null);
 		_PanelB.add(_txtPlayerStats);
-		_txtPlayerStats.setBounds(10, 20, 140, 140);
+		_txtPlayerStats.setBounds(10, 20, 140, 180);
 		_PanelB.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		_PanelB.setBorder(BorderFactory.createTitledBorder("Player Stats"));
 		_txtPlayerStats.setEditable(false);
-		_PanelB.setBounds(400, 30, 160, 170);
+		_PanelB.setBounds(400, 30, 160, 210);
 		_view.add(_PanelB);
-		
-		
-		
-		
+
 		_view.add(_btnUp);
-		_btnUp.setBounds(450, 270, 70,30);
+		_btnUp.setBounds(450, 280, 70, 30);
 
 		_view.add(_btnDown);
-		_btnDown.setBounds(450, 300, 70, 30);
+		_btnDown.setBounds(450, 310, 70, 30);
 
 		_view.add(_btnLeft);
-		_btnLeft.setBounds(390, 300, 70, 30);
+		_btnLeft.setBounds(390, 310, 70, 30);
 
 		_view.add(_btnRight);
-		_btnRight.setBounds(510, 300, 70, 30);
+		_btnRight.setBounds(510, 310, 70, 30);
 
 		_view.add(_Run);
 		_Run.setBounds(390, 250, 70, 30);
@@ -235,19 +234,18 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_view.add(_Fight);
 		_Fight.setBounds(510, 250, 70, 30);
 		_Fight.setEnabled(false);
-		
+
 		_view.add(_back);
 		_back.setBounds(490, 390, 100, 30);
-
 
 		this.add(_view);
 		this.setSize(600, 450);
 		this.setVisible(true);
-		return ;
+		return;
 	}
 
 	@Override
-    public void drawMap(GameMap game) {
+	public void drawMap(GameMap game) {
 		_txtDisplay.setText("\n");
 		for (int i = 0; i < game.map.length; i += 1) {
 			_txtDisplay.append("     ");
@@ -257,22 +255,22 @@ public class ViewGUI extends JFrame implements SwingyView {
 			_txtDisplay.append("\n\r");
 		}
 		// add palyer stats
-
-		return ;
+		_txtPlayerStats.setText(game.hero.toString());
+		return;
 	}
 
 	@Override
 	public void alertMsg(String msg) {
 		JOptionPane.showMessageDialog(null, msg);
-		return ;
+		return;
 	}
 
-    @Override
+	@Override
 	public void clearView() {
 		this.remove(_view);
 		this.revalidate();
 		this.repaint();
-		return ;
+		return;
 	}
 
 }
