@@ -43,11 +43,12 @@ public class SwingyController {
 	public void consoleInterraction() {
 		_theView.iniView();
 		Scanner choice = new Scanner(System.in);
+		
 		try {
 			int inputChoice = choice.nextInt();
 			if (inputChoice == 1) {
 				_theView.clearView();
-				_theView.newGameView();
+				newGameOnConsole();
 				_buildHero();
 				_theView.drawMap(_map);
 				consoleGameLoop();
@@ -73,6 +74,27 @@ public class SwingyController {
 		} catch (Exception e) {
 			_theView.clearView();
 			consoleInterraction();
+		}
+		return ;
+	}
+
+	private void newGameOnConsole() {
+		Scanner choice = new Scanner(System.in);
+		_theView.newGameView();
+		_theView.clearView();
+		System.out.println("Do you wish to continue to create your Hero"+
+							"\n1. yes\n2. back to home screen");
+
+		try {
+			int input = choice.nextInt();
+			if (input == 2) {
+				_theView.clearView();
+				consoleInterraction();
+				return ;
+			}
+
+		} catch (Exception e) {
+			newGameOnConsole();
 		}
 		return ;
 	}
