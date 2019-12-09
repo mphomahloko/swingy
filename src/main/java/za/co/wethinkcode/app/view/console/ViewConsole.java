@@ -64,8 +64,6 @@ public class ViewConsole implements SwingyView {
 		System.out.flush();
 	}
 
-
-
 	@Override
 	public void drawMap(GameMap game) {
 		clearView();
