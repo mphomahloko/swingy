@@ -26,6 +26,7 @@ public class ViewConsole implements SwingyView {
 	@Override
 	public void newGameView() {
 		Scanner prompt = new Scanner(System.in);
+		System.out.println("Welcome to Swingy Let's build your Hero.");
 		System.out.print("Enter Hero Name: ");
 		_heroName = prompt.nextLine();
 		// add more hero's

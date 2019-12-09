@@ -43,7 +43,6 @@ public class SwingyController {
 	public void consoleInterraction() {
 		_theView.iniView();
 		Scanner choice = new Scanner(System.in);
-		
 		try {
 			int inputChoice = choice.nextInt();
 			if (inputChoice == 1) {
@@ -64,7 +63,7 @@ public class SwingyController {
 			}
 			if (inputChoice == 4) {
 				_theView.clearView();
-				System.out.println("\n\n\t\t\tThank You for Playing\n\n\n");
+				System.out.println("\n\n\t\t\tThank You for Playing Swing\n\n\n");
 				System.exit(1);
 			}
 			else {
@@ -81,6 +80,7 @@ public class SwingyController {
 	private void continueOnConsole() {
 		_theView.continueView();
 		Scanner choice = new Scanner(System.in);
+		int i = 1;
 		
 		try {
 			PlayerStatDB db = PlayerStatDB.getPlayerStats();
@@ -92,9 +92,16 @@ public class SwingyController {
 			}
 			for (Map<String,String> m:stats) {
 				System.out.println(m.get("id") + ". " + m.get("name"));
+				i++;
 			}
-			System.out.println("Choose your player");
+			System.out.print("\nProvide your player id or ENTER '" + i + "' TO GO BACK: ");
 			int inputChoice = choice.nextInt();
+			if (i == inputChoice)
+			{
+				_theView.clearView();
+				consoleInterraction();
+				return ;
+			}
 			for (Map<String,String> m:stats) {
 				if (Integer.parseInt(m.get("id")) == inputChoice) {
 					_map = new GameMap(_theModel.createCustomHero(m), _theView);
@@ -108,7 +115,7 @@ public class SwingyController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
-			System.out.println("*Player does not exist!\n");
+			System.out.println("*Player does not exist provide a valid id!\n");
 			continueOnConsole();
 		}
 		return ;
