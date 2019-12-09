@@ -27,7 +27,7 @@ public class GameMap {
 			}
 		}
 		// enermy class to randomly place an enermy
-		this.map[6][10] = "\033[0;31mE\033[0m";
+		this.map[6][10] = "E";
 		placePlayer();
 		return ;
 	}
@@ -37,7 +37,7 @@ public class GameMap {
 			gameState = false;
 			hero.setHeroX(20 / 2);
 			hero.setHeroY(20 / 2);
-			placePlayer();
+			this.map[hero.getHeroY()][hero.getHeroX()] = "P";
 			if (view instanceof ViewConsole) {
 				view.clearView();
 				return ;
@@ -45,6 +45,7 @@ public class GameMap {
 			view.alertMsg("You Win");
 			view.clearView();
 			view.iniView();
+			return ;
 		}
 		if (this.map[hero.getHeroY()][hero.getHeroX()] == "E") {
 			view.alertMsg("You have Encounterd an enermy");

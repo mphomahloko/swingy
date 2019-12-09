@@ -69,7 +69,7 @@ public class ViewConsole implements SwingyView {
 	@Override
 	public void drawMap(GameMap game) {
 		clearView();
-		System.out.println("\t\t\033[1;31mSWINGY\033[0m");
+		System.out.println("\t\t\033[1;91mSWINGY\033[0m");
 
 		System.out.print("\n");
 		for (int i = 0; i < game.map.length; i += 1) {

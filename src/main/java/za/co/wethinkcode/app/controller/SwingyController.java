@@ -25,6 +25,9 @@ import java.util.Scanner;
 
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+
+import javassist.expr.Instanceof;
+
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 
@@ -151,27 +154,24 @@ public class SwingyController {
 		while (_map.gameState) {
 			try {
 				choice = new Scanner(System.in);
-				if (choice.hasNextInt()) {
-					int inputChoice = choice.nextInt();
-					if (inputChoice == 1) {
-						_map.moveUp();
-					}
-					if (inputChoice == 2) {
-						_map.moveDown();
-					}
-					if (inputChoice == 3) {
-						_map.moveLeft();
-					}
-					if (inputChoice == 4) {
-						_map.moveRight();
-					}
-					if (inputChoice >= 1 & inputChoice <= 4) {
-						System.out.println("Read the following instructions properly!.");
-					}
-					db.updateInfo(_map.hero);
-				} else {
-					System.out.println("Read the following instructions properly!.mm");
+				
+				int inputChoice = choice.nextInt();
+				if (inputChoice == 1) {
+					_map.moveUp();
 				}
+				if (inputChoice == 2) {
+					_map.moveDown();
+				}
+				if (inputChoice == 3) {
+					_map.moveLeft();
+				}
+				if (inputChoice == 4) {
+					_map.moveRight();
+				}
+				if (!(inputChoice > 0 & inputChoice < 5)) {
+					System.out.println("Read the following instructions properly!.");
+				}
+				db.updateInfo(_map.hero);
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {
@@ -195,6 +195,8 @@ public class SwingyController {
 			if (!isEmpty(constraintViolations))
 			{
 				_theView.alertMsg("Your Hero name has to have a min of three letters.");
+				if (_theView instanceof ViewConsole)
+					newGameOnConsole();
 				return ;
 			}
 			db.insertInfo(hero);
