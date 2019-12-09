@@ -7,6 +7,7 @@ import za.co.wethinkcode.app.core.GameMap;
 import za.co.wethinkcode.app.model.SwingyModel;
 import za.co.wethinkcode.app.model.Hero;
 import za.co.wethinkcode.app.view.SwingyView;
+import za.co.wethinkcode.app.view.console.ViewConsole;
 import za.co.wethinkcode.app.view.gui.ViewGUI;
 import za.co.wethinkcode.app.core.PlayerStatDB;
 
@@ -39,12 +40,6 @@ public class SwingyController {
 		return ;
 	}
 	
-	public void guiInterraction() {
-		_theView.iniView();
-		_theView.addPlayersInterraction(new SwingyListner());
-		return ;
-	}
-	
 	public void consoleInterraction() {
 		_theView.iniView();
 		Scanner choice = new Scanner(System.in);
@@ -57,14 +52,27 @@ public class SwingyController {
 				_buildHero();
 				_theView.drawMap(_map);
 				consoleGameLoop();
-			} else if (inputChoice == 2) {
+			}
+			if (inputChoice == 2) {
 				_theView.clearView();
 				continueOnConsole();
-			} else {
+			}
+			if (inputChoice == 3) {
+				this._theView = new ViewGUI();
+				guiInterraction();
+				return ;
+			}
+			if (inputChoice == 4) {
+				_theView.clearView();
+				System.out.println("\n\n\t\t\tThank You for Playing\n\n\n");
+				System.exit(1);
+			}
+			else {
 				_theView.clearView();
 				consoleInterraction();
 			}
 		} catch (Exception e) {
+			_theView.clearView();
 			consoleInterraction();
 		}
 		return ;
@@ -100,11 +108,54 @@ public class SwingyController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("*Player does not exist!\n");
+			continueOnConsole();
 		}
 		return ;
 	}
 	
+	private void consoleGameLoop() {
+		Scanner choice;
+		PlayerStatDB db = PlayerStatDB.getPlayerStats();
+		_map.gameState = true;
+
+		while (_map.gameState) {
+			try {
+				choice = new Scanner(System.in);
+				if (choice.hasNextInt()) {
+					int inputChoice = choice.nextInt();
+					if (inputChoice == 1) {
+						_map.moveUp();
+					}
+					if (inputChoice == 2) {
+						_map.moveDown();
+					}
+					if (inputChoice == 3) {
+						_map.moveLeft();
+					}
+					if (inputChoice == 4) {
+						_map.moveRight();
+					}
+					if (inputChoice >= 1 & inputChoice <= 4) {
+						System.out.println("Read the following instructions properly!.");
+					}
+					db.updateInfo(_map.hero);
+				} else {
+					System.out.println("Read the following instructions properly!.mm");
+				}
+			} catch (ClassNotFoundException e) {
+				e.printStackTrace();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch(Exception e) {
+				System.out.println("Not a number read instructions properly");
+			}
+		}
+		_theView.alertMsg("You Win");
+		consoleInterraction();
+		return ;
+	}
+
 	private void _buildHero() {
 		PlayerStatDB db = PlayerStatDB.getPlayerStats();
 		Hero hero = _theModel.createHero(_theView.getHeroName(), _theView.getHeroType());
@@ -133,43 +184,10 @@ public class SwingyController {
 		}
 		return ;
 	}
-
-	private void consoleGameLoop() {
-		Scanner choice;
-		PlayerStatDB db = PlayerStatDB.getPlayerStats();
-		_map.gameState = true;
-
-		while (_map.gameState) {
-			System.out.println("1.move up\n2.move down\n3.move left\n4.move right");
-			try{
-				choice = new Scanner(System.in);
-				if (choice.hasNextInt()) {
-					int inputChoice = choice.nextInt();
-					if (inputChoice == 1) {
-						_map.moveUp();
-					} else if (inputChoice == 2) {
-						_map.moveDown();
-					}else if (inputChoice == 3) {
-						_map.moveLeft();
-					}else if (inputChoice == 4) {
-						_map.moveRight();
-					} else {
-						System.out.println("Read the following instructions properly!.");
-					}
-					db.updateInfo(_map.hero);
-				} else {
-					System.out.println("Read the following instructions properly!.");
-				}
-			} catch (ClassNotFoundException e) {
-				e.printStackTrace();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			} catch(Exception e) {
-				System.out.println("Not a number read instructions properly");
-			}
-		}
-		_theView.alertMsg("You Win");
-		consoleInterraction();
+	
+	public void guiInterraction() {
+		_theView.iniView();
+		_theView.addPlayersInterraction(new SwingyListner());
 		return ;
 	}
 
@@ -286,6 +304,11 @@ public class SwingyController {
 				int opt = JOptionPane.showConfirmDialog(null, "Quit Game?");
 				if (opt == 0)
 					System.exit(1);
+			}
+			if (e.getActionCommand().equals("Console")) {
+				_theView.clearView();
+				_theView = new ViewConsole();
+				consoleInterraction();
 			}
 			return ;
 		}

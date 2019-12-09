@@ -2,6 +2,7 @@ package za.co.wethinkcode.app.core;
 
 import za.co.wethinkcode.app.model.Hero;
 import za.co.wethinkcode.app.view.SwingyView;
+import za.co.wethinkcode.app.view.console.ViewConsole;
 
 public class GameMap {
 	public String[][] map;
@@ -31,21 +32,25 @@ public class GameMap {
 		return ;
 	}
 
-	// Algorithm to fight I guess
 	public void placePlayer() {
 		if (this.map.length <= hero.getHeroY() || this.map[0].length <= hero.getHeroX() || hero.getHeroY() < 0 || hero.getHeroX() < 0) {
 			gameState = false;
-			view.alertMsg("You Win");
 			hero.setHeroX(20 / 2);
 			hero.setHeroY(20 / 2);
 			placePlayer();
+			if (view instanceof ViewConsole) {
+				view.clearView();
+				return ;
+			}
+			view.alertMsg("You Win");
 			view.clearView();
 			view.iniView();
-		} else if (this.map[hero.getHeroY()][hero.getHeroX()] == "E") {
-			view.alertMsg("You have Encounterd an enermy");
-		} else {
-			this.map[hero.getHeroY()][hero.getHeroX()] = "P";
 		}
+		if (this.map[hero.getHeroY()][hero.getHeroX()] == "E") {
+			view.alertMsg("You have Encounterd an enermy");
+			// Algorithm to fight I guess
+		}
+		this.map[hero.getHeroY()][hero.getHeroX()] = "P";
 		return ;
 	}
 

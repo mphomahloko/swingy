@@ -37,6 +37,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 	private JButton _btnRight = new JButton("RIGHT");
 	private JButton _newGame = new JButton("New Game.");
 	private JButton _continue = new JButton("Continue ...");
+	private JButton _console = new JButton("Console");
 	private JButton _cont = new JButton("Continue");
 	private JButton _Run = new JButton("Run");
 	private JButton _Fight = new JButton("Fight");
@@ -70,9 +71,10 @@ public class ViewGUI extends JFrame implements SwingyView {
 	@Override
 	public void iniView() {
 		_view = new JPanel();
-		_view.setLayout(new GridLayout(3, 1));
+		_view.setLayout(new GridLayout(4, 1));
 		_view.add(_newGame);
 		_view.add(_continue);
+		_view.add(_console);
 		_view.add(_quit);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -139,6 +141,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_cont.addActionListener(listensForAction);
 		_back.addActionListener(listensForAction);
 		_quit.addActionListener(listensForAction);
+		_console.addActionListener(listensForAction);
 		return;
 	}
 
@@ -270,6 +273,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 		this.remove(_view);
 		this.revalidate();
 		this.repaint();
+		this.setVisible(false);
 		return;
 	}
 
