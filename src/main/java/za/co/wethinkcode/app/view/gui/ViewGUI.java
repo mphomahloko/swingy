@@ -1,12 +1,18 @@
 package za.co.wethinkcode.app.view.gui;
 
+import java.awt.Color;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
 
 import za.co.wethinkcode.app.core.PlayerStatDB;
 import za.co.wethinkcode.app.view.SwingyView;
+import za.co.wethinkcode.app.core.GameMap;
+
+import java.util.Map;
+import java.util.List;
+
+import java.sql.SQLException;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -18,16 +24,14 @@ import javax.swing.JTextField;
 import javax.swing.JOptionPane;
 import javax.swing.BorderFactory;
 
-import java.awt.Color;
-import java.awt.GridLayout;
-
 public class ViewGUI extends JFrame implements SwingyView {
-    /**
-	 *
+	/**
+	 * Gui View
 	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel _view, _PanelA, _PanelB;
 
+	// gui button's ...
 	private JButton _btnUp = new JButton("UP");
 	private JButton _btnDown = new JButton("DOWN");
 	private JButton _btnLeft = new JButton("LEFT");
@@ -39,16 +43,24 @@ public class ViewGUI extends JFrame implements SwingyView {
 	private JButton _Fight = new JButton("Fight");
 	private JButton _quit = new JButton("Quit");
 	private JButton _back = new JButton("Back");
+	private JButton _createHero = new JButton("Create Hero.");
 
-
+	// hero name ...
 	private JLabel _heroName = new JLabel("Hero Name: ");
 	private JTextField _getHeroName = new JTextField(10);
+
+	// hero type ...
 	private JLabel _heroType = new JLabel("Hero Type: ");
-	private JButton _createHero = new JButton("Create Hero.");
 	private String[] hero  = {"Swordman", "Knight", "hunter"};
 	private JComboBox cbHero = new JComboBox<String>(hero);
+
+	// exsiting hero's ...
 	private  JComboBox Heros = new JComboBox<String>();
+
+	// game view ...
 	private JTextArea _txtDisplay = new JTextArea(100, 100);
+
+	// player statistics
 	private JTextArea _txtPlayerStats = new JTextArea(50, 50);
 	
 	public ViewGUI() {
@@ -74,7 +86,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 	}
 
 	@Override
-    public void newGameView() {
+	public void newGameView() {
 		_view = new JPanel();
 		_view.setLayout(null);
 
@@ -101,13 +113,13 @@ public class ViewGUI extends JFrame implements SwingyView {
 		this.setVisible(true);
 		return ;
 	}
-
-    @Override
+	
+	@Override
 	public String getHeroName() {
 		return _getHeroName.getText();
 	}
-
-    @Override
+	
+	@Override
 	public String getHeroType() {
 		return hero[cbHero.getSelectedIndex()];
 	}
@@ -235,16 +247,17 @@ public class ViewGUI extends JFrame implements SwingyView {
 	}
 
 	@Override
-    public void drawMap(String [][] map) {
+    public void drawMap(GameMap game) {
 		_txtDisplay.setText("\n");
-		for (int i = 0; i < map.length; i += 1) {
+		for (int i = 0; i < game.map.length; i += 1) {
 			_txtDisplay.append("     ");
-			for (int j = 0; j < map.length; j += 1) {
-				_txtDisplay.append(String.valueOf(map[i][j]) + " ");
+			for (int j = 0; j < game.map.length; j += 1) {
+				_txtDisplay.append(String.valueOf(game.map[i][j]) + " ");
 			}
 			_txtDisplay.append("\n\r");
 		}
 		// add palyer stats
+
 		return ;
 	}
 

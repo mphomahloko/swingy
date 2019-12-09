@@ -44,18 +44,18 @@ public class SwingyController {
 		_theView.addPlayersInterraction(new SwingyListner());
 		return ;
 	}
-
+	
 	public void consoleInterraction() {
 		_theView.iniView();
 		Scanner choice = new Scanner(System.in);
 		
-		try{
+		try {
 			int inputChoice = choice.nextInt();
 			if (inputChoice == 1) {
 				_theView.clearView();
 				_theView.newGameView();
 				_buildHero();
-				_theView.drawMap(_map.map);
+				_theView.drawMap(_map);
 				consoleGameLoop();
 			} else if (inputChoice == 2) {
 				_theView.clearView();
@@ -64,7 +64,7 @@ public class SwingyController {
 				_theView.clearView();
 				consoleInterraction();
 			}
-		}catch(Exception e) {
+		} catch (Exception e) {
 			consoleInterraction();
 		}
 		return ;
@@ -92,23 +92,23 @@ public class SwingyController {
 					_map = new GameMap(_theModel.createCustomHero(m), _theView);
 				}
 			}
-			_theView.drawMap(_map.map);
+			_theView.drawMap(_map);
 			consoleGameLoop();
 
-		}catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch(Exception e) {
-            e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		return ;
 	}
-
+	
 	private void _buildHero() {
 		PlayerStatDB db = PlayerStatDB.getPlayerStats();
 		Hero hero = _theModel.createHero(_theView.getHeroName(), _theView.getHeroType());
-        try {
+		try {
 			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 			Validator validator = (Validator) factory.getValidator();
 			Set<ConstraintViolation<Hero>> constraintViolations = validator.validate(hero);
@@ -117,21 +117,20 @@ public class SwingyController {
 				_theView.alertMsg("Your Hero name has to have a min of three letters.");
 				return ;
 			}
-            db.insertInfo(hero);
-            ResultSet res = db.getGeneratedKeys();
-            while(res.next()) {
-               hero.setHeroId(Integer.parseInt(res.getString("LAST")));
-            }
+			db.insertInfo(hero);
+			ResultSet res = db.getGeneratedKeys();
+			while(res.next()) {
+				hero.setHeroId(Integer.parseInt(res.getString("LAST")));
+			}
 			_map = new GameMap(hero, _theView);
-        }catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch(Exception e) {
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
 			System.out.println("Hero Has no name");
-            e.printStackTrace();
-        }
-
+			e.printStackTrace();
+		}
 		return ;
 	}
 
@@ -154,24 +153,23 @@ public class SwingyController {
 						_map.moveLeft();
 					}else if (inputChoice == 4) {
 						_map.moveRight();
-					}
-					 else {
-						 System.out.println("Read the following instructions properly!.");
+					} else {
+						System.out.println("Read the following instructions properly!.");
 					}
 					db.updateInfo(_map.hero);
-				}else {
+				} else {
 					System.out.println("Read the following instructions properly!.");
-			   }
-			}catch (ClassNotFoundException e) {
+				}
+			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch(Exception e) {
-				System.out.println("Not a number read instructions properly"); ;
+				System.out.println("Not a number read instructions properly");
 			}
 		}
 		_theView.alertMsg("You Win");
-		consoleInterraction();	
+		consoleInterraction();
 		return ;
 	}
 
@@ -193,7 +191,7 @@ public class SwingyController {
 							_map = new GameMap(_theModel.createCustomHero(m), _theView);
 						}
 					}
-				}catch (ClassNotFoundException e1) {
+				} catch (ClassNotFoundException e1) {
 					e1.printStackTrace();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
@@ -201,7 +199,7 @@ public class SwingyController {
 					e1.printStackTrace();
 				}
 				_theView.gameView();
-				_theView.drawMap(_map.map);
+				_theView.drawMap(_map);
 			}
 			if (e.getActionCommand().equals("Create Hero.")) {
 				try {
@@ -216,7 +214,7 @@ public class SwingyController {
 				}
 				_theView.clearView();
 				_theView.gameView();
-				_theView.drawMap(_map.map);
+				_theView.drawMap(_map);
 			}
 			if (e.getActionCommand().equals("Continue ...")) {
 				_theView.clearView();
@@ -227,7 +225,7 @@ public class SwingyController {
 						_theView.newGameView();
 						return ;
 					}
-				}catch (ClassNotFoundException e1) {
+				} catch (ClassNotFoundException e1) {
 					e1.printStackTrace();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
@@ -241,8 +239,8 @@ public class SwingyController {
 				try {
 					PlayerStatDB db = PlayerStatDB.getPlayerStats();
 					db.updateInfo(_map.hero);
-				}catch (ClassNotFoundException e1) {
-						e1.printStackTrace();
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -252,8 +250,8 @@ public class SwingyController {
 				try {
 					PlayerStatDB db = PlayerStatDB.getPlayerStats();
 					db.updateInfo(_map.hero);
-				}catch (ClassNotFoundException e1) {
-						e1.printStackTrace();
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -263,8 +261,8 @@ public class SwingyController {
 				try {
 					PlayerStatDB db = PlayerStatDB.getPlayerStats();
 					db.updateInfo(_map.hero);
-				}catch (ClassNotFoundException e1) {
-						e1.printStackTrace();
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}
@@ -274,8 +272,8 @@ public class SwingyController {
 				try {
 					PlayerStatDB db = PlayerStatDB.getPlayerStats();
 					db.updateInfo(_map.hero);
-				}catch (ClassNotFoundException e1) {
-						e1.printStackTrace();
+				} catch (ClassNotFoundException e1) {
+					e1.printStackTrace();
 				} catch (SQLException e1) {
 					e1.printStackTrace();
 				}

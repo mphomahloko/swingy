@@ -25,6 +25,7 @@ public class GameMap {
 				this.map[i][j] = ".";
 			}
 		}
+		// enermy class
 		this.map[6][10] = "E";
 		placePlayer();
 		return ;
@@ -32,8 +33,7 @@ public class GameMap {
 
 	// Algorithm to fight I guess
 	public void placePlayer() {
-		if (this.map.length <= hero.getHeroY() || this.map[0].length <= hero.getHeroX() || hero.getHeroY() < 0
-				|| hero.getHeroX() < 0) {
+		if (this.map.length <= hero.getHeroY() || this.map[0].length <= hero.getHeroX() || hero.getHeroY() < 0 || hero.getHeroX() < 0) {
 			gameState = false;
 			view.alertMsg("You Win");
 			hero.setHeroX(20 / 2);
@@ -46,34 +46,34 @@ public class GameMap {
 		} else {
 			this.map[hero.getHeroY()][hero.getHeroX()] = "P";
 		}
-		return;
+		return ;
 	}
 
 	public void moveRight() {
 		hero.setHeroX(hero.getHeroX() + 1);
 		_renderMap();
-		view.drawMap(map);
+		view.drawMap(this);
 		return ;
 	}
 
 	public void moveLeft() {
 		hero.setHeroX(hero.getHeroX() - 1);
 		_renderMap();
-		view.drawMap(map);
+		view.drawMap(this);
 		return ;
 	}
 
 	public void moveDown() {
 		hero.setHeroY(hero.getHeroY() + 1);
 		_renderMap();
-		view.drawMap(map);
+		view.drawMap(this);
 		return ;
 	}
 
 	public void moveUp() {
 		hero.setHeroY(hero.getHeroY() - 1);
 		_renderMap();
-		view.drawMap(map);
+		view.drawMap(this);
 		return ;
 	}
 }

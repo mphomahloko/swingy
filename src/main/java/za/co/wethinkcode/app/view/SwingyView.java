@@ -2,9 +2,11 @@ package za.co.wethinkcode.app.view;
 
 import java.awt.event.ActionListener;
 
-	/* ************************************************************************** */
-	/* 							Helps with the View's							  */
-	/* ************************************************************************** */
+import za.co.wethinkcode.app.core.GameMap;
+
+/* ************************************************************************** */
+/* 				Helps with the View's			      */
+/* ************************************************************************** */
 
 public interface SwingyView {
 	public void iniView();
@@ -15,6 +17,6 @@ public interface SwingyView {
 	public String getHeroName();
 	public String getHeroType();
 	public void	alertMsg(String msg);
-	public void drawMap(String [][] map);
+	public void drawMap(GameMap game);
 	public void addPlayersInterraction(ActionListener listensForAction);
 }
