@@ -26,8 +26,8 @@ public class GameMap {
 				this.map[i][j] = ".";
 			}
 		}
-		// enermy class
-		this.map[6][10] = "E";
+		// enermy class to randomly place an enermy
+		this.map[6][10] = "\033[0;31mE\033[0m";
 		placePlayer();
 		return ;
 	}
