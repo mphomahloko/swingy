@@ -62,6 +62,7 @@ public class GameMap {
 	}
 
 	public void moveRight() {
+		previousPos[0] = hero.getHeroX();
 		hero.setHeroX(hero.getHeroX() + 1);
 		_renderMap();
 		view.drawMap(this);
@@ -69,6 +70,7 @@ public class GameMap {
 	}
 
 	public void moveLeft() {
+		previousPos[0] = hero.getHeroX();
 		hero.setHeroX(hero.getHeroX() - 1);
 		_renderMap();
 		view.drawMap(this);
@@ -76,6 +78,7 @@ public class GameMap {
 	}
 
 	public void moveDown() {
+		previousPos[1] = hero.getHeroY();
 		hero.setHeroY(hero.getHeroY() + 1);
 		_renderMap();
 		view.drawMap(this);
@@ -83,6 +86,7 @@ public class GameMap {
 	}
 
 	public void moveUp() {
+		previousPos[1] = hero.getHeroY();
 		hero.setHeroY(hero.getHeroY() - 1);
 		_renderMap();
 		view.drawMap(this);
@@ -98,9 +102,9 @@ public class GameMap {
 	}
 
 	public void fleeEnermy() {
-		System.out.println("An Algo to go back to the previous position.");
-		Scanner choice = new Scanner(System.in);
-		int inputChoice = choice.nextInt();
+		// works just gonna add a twist
+		hero.setHeroX(previousPos[0]);
+		hero.setHeroY(previousPos[1]);
 		return ;
 	}
 
