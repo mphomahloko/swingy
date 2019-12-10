@@ -22,7 +22,7 @@ public class OldHeroBuilder implements HeroBuilder {
         _hero.setHeroDefence(5);
         _hero.setHeroArtifact("");
 
-        _hero.setHeroX(20 / 2);
+        _hero.setHeroX(44 / 2);
         _hero.setHeroY(20 / 2);
         return ;
     }

@@ -235,11 +235,9 @@ public class ViewGUI extends JFrame implements SwingyView {
 
 		_view.add(_run);
 		_run.setBounds(390, 250, 70, 30);
-		_run.setEnabled(false);
 
 		_view.add(_fight);
 		_fight.setBounds(510, 250, 70, 30);
-		_fight.setEnabled(false);
 
 		_view.add(_back);
 		_back.setBounds(490, 390, 100, 30);
@@ -255,12 +253,11 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_txtDisplay.setText("\n");
 		for (int i = 0; i < game.map.length; i += 1) {
 			_txtDisplay.append("     ");
-			for (int j = 0; j < game.map.length; j += 1) {
+			for (int j = 0; j < game.map[0].length; j += 1) {
 				_txtDisplay.append(String.valueOf(game.map[i][j]) + " ");
 			}
 			_txtDisplay.append("\n\r");
 		}
-		// add palyer stats
 		_txtPlayerStats.setText(game.hero.toString());
 		return;
 	}

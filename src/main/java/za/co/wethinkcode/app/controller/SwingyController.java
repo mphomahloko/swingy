@@ -170,7 +170,12 @@ public class SwingyController {
 				if (inputChoice == 4) {
 					_map.moveRight();
 				}
-				if (!(inputChoice > 0 & inputChoice < 5)) {
+				if (inputChoice == 5) {
+					_theView.clearView();
+					consoleInterraction();
+					return ;
+				}
+				if (!(inputChoice > 0 & inputChoice < 6)) {
 					System.out.println("Read the following instructions properly!.");
 				}
 				db.updateInfo(_map.hero);
@@ -286,28 +291,18 @@ public class SwingyController {
 				_theView.continueView();
 			}
 			if (e.getActionCommand().equals("Run")) {
-				System.out.println("running");
-				// try {
-				// 	PlayerStatDB db = PlayerStatDB.getPlayerStats();
-				// 	db.updateInfo(_map.hero);
-				// } catch (ClassNotFoundException e1) {
-				// 	e1.printStackTrace();
-				// } catch (SQLException e1) {
-				// 	e1.printStackTrace();
-				// }
+				if (_map instanceof GameMap & _enermyTerotory()) {
+					_map.fleeEnermy();
+					_map.renderMap();
+					_theView.drawMap(_map);
+				}
 			}
 			if (e.getActionCommand().equals("Fight")) {
-				System.out.println("fighting");
-				// try {
-				// 	PlayerStatDB db = PlayerStatDB.getPlayerStats();
-				// 	db.updateInfo(_map.hero);
-				// } catch (ClassNotFoundException e1) {
-				// 	e1.printStackTrace();
-				// } catch (SQLException e1) {
-				// 	e1.printStackTrace();3
-				// }
+				if (_map instanceof GameMap & _enermyTerotory()) {
+					_map.fightEnermy();
+				}
 			}
-			if (e.getActionCommand().equals("UP")) {
+			if (e.getActionCommand().equals("UP") & !_enermyTerotory()) {
 				_map.moveUp();
 				try {
 					PlayerStatDB db = PlayerStatDB.getPlayerStats();
@@ -318,7 +313,7 @@ public class SwingyController {
 					e1.printStackTrace();
 				}
 			}
-			if (e.getActionCommand().equals("DOWN")) {
+			if (e.getActionCommand().equals("DOWN") & !_enermyTerotory()) {
 				_map.moveDown();
 				try {
 					PlayerStatDB db = PlayerStatDB.getPlayerStats();
@@ -329,7 +324,7 @@ public class SwingyController {
 					e1.printStackTrace();
 				}
 			}
-			if (e.getActionCommand().equals("LEFT")) {
+			if (e.getActionCommand().equals("LEFT") & !_enermyTerotory()) {
 				_map.moveLeft();
 				try {
 					PlayerStatDB db = PlayerStatDB.getPlayerStats();
@@ -340,7 +335,7 @@ public class SwingyController {
 					e1.printStackTrace();
 				}
 			}
-			if (e.getActionCommand().equals("RIGHT")) {
+			if (e.getActionCommand().equals("RIGHT") & !_enermyTerotory()) {
 				_map.moveRight();
 				try {
 					PlayerStatDB db = PlayerStatDB.getPlayerStats();
@@ -370,6 +365,15 @@ public class SwingyController {
 				consoleInterraction();
 			}
 			return ;
+		}
+
+		private boolean _enermyTerotory() {
+			if (_map instanceof GameMap) {
+				if (_map.map[6][10] == "P") {
+					return true;
+				}
+			}
+			return false;
 		}
 	}
 }
