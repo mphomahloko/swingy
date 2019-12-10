@@ -61,13 +61,15 @@ public class SwingyController {
 				continueOnConsole();
 			}
 			if (inputChoice == 3) {
+				this._theView.clearView();
+				System.out.println("\n\n\t\t\tSWINGY RUNNING ON GUI ;-)\n\n\n");
 				this._theView = new ViewGUI();
 				guiInterraction();
 				return ;
 			}
 			if (inputChoice == 4) {
 				_theView.clearView();
-				System.out.println("\n\n\t\t\tThank You for Playing Swing\n\n\n");
+				System.out.println("\n\n\t\t\tThank You for Playing With Us c|:\n\n\n");
 				System.exit(1);
 			}
 			else {
@@ -283,6 +285,28 @@ public class SwingyController {
 				}
 				_theView.continueView();
 			}
+			if (e.getActionCommand().equals("Run")) {
+				System.out.println("running");
+				// try {
+				// 	PlayerStatDB db = PlayerStatDB.getPlayerStats();
+				// 	db.updateInfo(_map.hero);
+				// } catch (ClassNotFoundException e1) {
+				// 	e1.printStackTrace();
+				// } catch (SQLException e1) {
+				// 	e1.printStackTrace();
+				// }
+			}
+			if (e.getActionCommand().equals("Fight")) {
+				System.out.println("fighting");
+				// try {
+				// 	PlayerStatDB db = PlayerStatDB.getPlayerStats();
+				// 	db.updateInfo(_map.hero);
+				// } catch (ClassNotFoundException e1) {
+				// 	e1.printStackTrace();
+				// } catch (SQLException e1) {
+				// 	e1.printStackTrace();3
+				// }
+			}
 			if (e.getActionCommand().equals("UP")) {
 				_map.moveUp();
 				try {
@@ -333,8 +357,12 @@ public class SwingyController {
 			}
 			if (e.getActionCommand().equals("Quit")) {
 				int opt = JOptionPane.showConfirmDialog(null, "Quit Game?");
-				if (opt == 0)
+				if (opt == 0) {
+					_theView = new ViewConsole();
+					_theView.clearView();
+					System.out.println("\n\n\t\t\tThank You for Playing With Us c|:\n\n\n");
 					System.exit(1);
+				}
 			}
 			if (e.getActionCommand().equals("Console")) {
 				_theView.clearView();

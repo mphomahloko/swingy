@@ -39,8 +39,8 @@ public class ViewGUI extends JFrame implements SwingyView {
 	private JButton _continue = new JButton("Continue ...");
 	private JButton _console = new JButton("Console");
 	private JButton _cont = new JButton("Continue");
-	private JButton _Run = new JButton("Run");
-	private JButton _Fight = new JButton("Fight");
+	private JButton _run = new JButton("Run");
+	private JButton _fight = new JButton("Fight");
 	private JButton _quit = new JButton("Quit");
 	private JButton _back = new JButton("Back");
 	private JButton _createHero = new JButton("Create Hero.");
@@ -78,7 +78,8 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_view.add(_quit);
 
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+		
+		// verify if am happy with the size@ school 
 		this.setSize(200, 200);
 		this.setLocationRelativeTo(null);
 		this.add(_view);
@@ -142,6 +143,8 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_back.addActionListener(listensForAction);
 		_quit.addActionListener(listensForAction);
 		_console.addActionListener(listensForAction);
+		_run.addActionListener(listensForAction);
+		_fight.addActionListener(listensForAction);
 		return;
 	}
 
@@ -230,13 +233,13 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_view.add(_btnRight);
 		_btnRight.setBounds(510, 310, 70, 30);
 
-		_view.add(_Run);
-		_Run.setBounds(390, 250, 70, 30);
-		_Run.setEnabled(false);
+		_view.add(_run);
+		_run.setBounds(390, 250, 70, 30);
+		_run.setEnabled(false);
 
-		_view.add(_Fight);
-		_Fight.setBounds(510, 250, 70, 30);
-		_Fight.setEnabled(false);
+		_view.add(_fight);
+		_fight.setBounds(510, 250, 70, 30);
+		_fight.setEnabled(false);
 
 		_view.add(_back);
 		_back.setBounds(490, 390, 100, 30);

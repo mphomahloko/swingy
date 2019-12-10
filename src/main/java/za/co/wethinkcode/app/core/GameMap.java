@@ -4,14 +4,20 @@ import za.co.wethinkcode.app.model.Hero;
 import za.co.wethinkcode.app.view.SwingyView;
 import za.co.wethinkcode.app.view.console.ViewConsole;
 
+import java.util.Scanner;
+
 public class GameMap {
 	public String[][] map;
 	public SwingyView view;
 	public Hero hero;
+	private Integer[] previousPos;
 	public boolean gameState;
 
 	public GameMap(Hero hero, SwingyView view) {
 		this.hero = hero;
+		previousPos = new Integer[2];
+		previousPos[0] = hero.getHeroX();
+		previousPos[1] = hero.getHeroY();
 
 		// rough sketch
 		this.map = new String[20][20];
@@ -49,7 +55,7 @@ public class GameMap {
 		}
 		if (this.map[hero.getHeroY()][hero.getHeroX()] == "E") {
 			view.alertMsg("You have Encounterd an enermy");
-			// Algorithm to fight I guess
+			_fightOrRunSimulation();  
 		}
 		this.map[hero.getHeroY()][hero.getHeroX()] = "P";
 		return ;
@@ -80,6 +86,28 @@ public class GameMap {
 		hero.setHeroY(hero.getHeroY() - 1);
 		_renderMap();
 		view.drawMap(this);
+		return ;
+	}
+
+	private void _fightOrRunSimulation() {
+		if (view instanceof ViewConsole) {
+			ViewConsole consoleView = (ViewConsole)view;
+			consoleView.runOrFight(this); 
+		}
+		return ;
+	}
+
+	public void fleeEnermy() {
+		System.out.println("An Algo to go back to the previous position.");
+		Scanner choice = new Scanner(System.in);
+		int inputChoice = choice.nextInt();
+		return ;
+	}
+
+	public void fightEnermy() {
+		System.out.println("Let's Fight...");
+		Scanner choice = new Scanner(System.in);
+		int inputChoice = choice.nextInt();
 		return ;
 	}
 }

@@ -81,15 +81,37 @@ public class ViewConsole implements SwingyView {
 		return ;
 	}
 
-    @Override
+	public void runOrFight(GameMap game) {
+		Scanner choice = new Scanner(System.in);
+		try {
+			System.out.println("\n\t1. Run\t2.Fight");
+			int inputChoice = choice.nextInt();
+			if (inputChoice == 1) {
+				game.fleeEnermy(); 
+				return ;
+			}
+			if (inputChoice == 2) {
+				game.fightEnermy(); 
+				return ;
+			}
+			System.out.println("invalid Input");
+			runOrFight(game);
+		} catch (Exception e) {
+			System.out.println("invalid Input");
+			runOrFight(game);
+		}
+		return ;
+	}
+	
+	@Override
 	public void alertMsg(String msg) {
 		System.out.println(msg);
 		return ;
 	}
-    
-    @Override
+
+	@Override
 	public void gameView() { return ; }
 	
 	@Override
-    	public void addPlayersInterraction(ActionListener listensForAction) { return ; }
+	public void addPlayersInterraction(ActionListener listensForAction) { return ; }
 }
