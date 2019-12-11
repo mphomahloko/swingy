@@ -51,7 +51,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 
 	// hero type ...
 	private JLabel _heroType = new JLabel("Hero Type: ");
-	private String[] hero = { "Swordman", "Knight", "hunter" };
+	private String[] hero = { "Swordman", "Knight", "Hunter", "Witch" };
 	private JComboBox cbHero = new JComboBox<String>(hero);
 
 	// exsiting hero's ...

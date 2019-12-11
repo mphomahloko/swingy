@@ -107,7 +107,6 @@ public class GameMap {
 		ViewGUI guiView = (ViewGUI)view;
 		guiView.clearView();
 		guiView.fightgameView(this);
-
 		return ;
 	}
 
@@ -115,6 +114,7 @@ public class GameMap {
 		// works just gonna add a twist
 		hero.setHeroX(previousPos[0]);
 		hero.setHeroY(previousPos[1]);
+		renderMap();
 		return ;
 	}
 

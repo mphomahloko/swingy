@@ -296,6 +296,7 @@ public class SwingyController {
 				}
 				_theView.clearView();
 				_theView.gameView();
+				_theView.drawMap(_map);
 			}
 			if (e.getActionCommand().equals("Fight")) {
 				if (_map instanceof GameMap) {
@@ -303,6 +304,7 @@ public class SwingyController {
 				}
 				_theView.clearView();
 				_theView.gameView();
+				_theView.drawMap(_map);
 			}
 			if (e.getActionCommand().equals("UP")) {
 				_map.moveUp();
