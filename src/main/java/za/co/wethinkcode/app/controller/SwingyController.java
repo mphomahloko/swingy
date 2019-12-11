@@ -291,18 +291,20 @@ public class SwingyController {
 				_theView.continueView();
 			}
 			if (e.getActionCommand().equals("Run")) {
-				if (_map instanceof GameMap & _enermyTerotory()) {
+				if (_map instanceof GameMap) {
 					_map.fleeEnermy();
-					_map.renderMap();
-					_theView.drawMap(_map);
 				}
+				_theView.clearView();
+				_theView.gameView();
 			}
 			if (e.getActionCommand().equals("Fight")) {
-				if (_map instanceof GameMap & _enermyTerotory()) {
+				if (_map instanceof GameMap) {
 					_map.fightEnermy();
 				}
+				_theView.clearView();
+				_theView.gameView();
 			}
-			if (e.getActionCommand().equals("UP") & !_enermyTerotory()) {
+			if (e.getActionCommand().equals("UP")) {
 				_map.moveUp();
 				try {
 					PlayerStatDB db = PlayerStatDB.getPlayerStats();
@@ -313,7 +315,7 @@ public class SwingyController {
 					e1.printStackTrace();
 				}
 			}
-			if (e.getActionCommand().equals("DOWN") & !_enermyTerotory()) {
+			if (e.getActionCommand().equals("DOWN")) {
 				_map.moveDown();
 				try {
 					PlayerStatDB db = PlayerStatDB.getPlayerStats();
@@ -324,7 +326,7 @@ public class SwingyController {
 					e1.printStackTrace();
 				}
 			}
-			if (e.getActionCommand().equals("LEFT") & !_enermyTerotory()) {
+			if (e.getActionCommand().equals("LEFT")) {
 				_map.moveLeft();
 				try {
 					PlayerStatDB db = PlayerStatDB.getPlayerStats();
@@ -335,7 +337,7 @@ public class SwingyController {
 					e1.printStackTrace();
 				}
 			}
-			if (e.getActionCommand().equals("RIGHT") & !_enermyTerotory()) {
+			if (e.getActionCommand().equals("RIGHT")) {
 				_map.moveRight();
 				try {
 					PlayerStatDB db = PlayerStatDB.getPlayerStats();
@@ -365,15 +367,6 @@ public class SwingyController {
 				consoleInterraction();
 			}
 			return ;
-		}
-
-		private boolean _enermyTerotory() {
-			if (_map instanceof GameMap) {
-				if (_map.map[6][10] == "P") {
-					return true;
-				}
-			}
-			return false;
 		}
 	}
 }

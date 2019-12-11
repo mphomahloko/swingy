@@ -104,6 +104,10 @@ public class GameMap {
 			consoleView.runOrFight(this);
 			return ;
 		}
+		ViewGUI guiView = (ViewGUI)view;
+		guiView.clearView();
+		guiView.fightgameView(this);
+
 		return ;
 	}
 
