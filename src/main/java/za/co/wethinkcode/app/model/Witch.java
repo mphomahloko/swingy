@@ -3,10 +3,10 @@ package za.co.wethinkcode.app.model;
 import java.util.Map;
 
     /* types of heros */
-public class OldHeroBuilder implements HeroBuilder {
+public class Witch implements HeroBuilder {
     private Hero _hero;
 
-    public OldHeroBuilder() {
+    public Witch() {
         _hero = new Hero();
         return ;
     }
