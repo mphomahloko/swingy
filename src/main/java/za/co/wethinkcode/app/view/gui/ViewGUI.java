@@ -214,35 +214,35 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_PanelB = new JPanel();
 		_PanelB.setLayout(null);
 		_PanelB.add(_txtPlayerStats);
-		_txtPlayerStats.setBounds(10, 20, 140, 180);
+		_txtPlayerStats.setBounds(10, 20, 140, 200);
 		_PanelB.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		_PanelB.setBorder(BorderFactory.createTitledBorder("Player Stats"));
 		_txtPlayerStats.setEditable(false);
-		_PanelB.setBounds(400, 30, 160, 210);
+		_PanelB.setBounds(400, 30, 160, 230);
 		_view.add(_PanelB);
 
 		_view.add(_btnUp);
-		_btnUp.setBounds(450, 280, 70, 30);
+		_btnUp.setBounds(450, 300, 70, 30);
 		_btnUp.setEnabled(true);
 
 		_view.add(_btnDown);
-		_btnDown.setBounds(450, 310, 70, 30);
+		_btnDown.setBounds(450, 330, 70, 30);
 		_btnDown.setEnabled(true);
 
 		_view.add(_btnLeft);
-		_btnLeft.setBounds(390, 310, 70, 30);
+		_btnLeft.setBounds(390, 330, 70, 30);
 		_btnLeft.setEnabled(true);
 
 		_view.add(_btnRight);
-		_btnRight.setBounds(510, 310, 70, 30);
+		_btnRight.setBounds(510, 330, 70, 30);
 		_btnRight.setEnabled(true);
 
 		_view.add(_run);
-		_run.setBounds(390, 250, 70, 30);
+		_run.setBounds(390, 270, 70, 30);
 		_run.setEnabled(false);
 
 		_view.add(_fight);
-		_fight.setBounds(510, 250, 70, 30);
+		_fight.setBounds(510, 270, 70, 30);
 		_fight.setEnabled(false);
 
 		_view.add(_back);

@@ -40,12 +40,29 @@ public class GameMap {
 	}
 
 	public void placePlayer() {
+		int level = hero.getHeroLevel() + 1;
+		int requiredExperiece = level * 1000 + (level - 1) * (level -1) * 450;
+		int experience =  hero.getHeroExperience();
 		if (this.map.length <= hero.getHeroY() || this.map[0].length <= hero.getHeroX() || hero.getHeroY() < 0
 				|| hero.getHeroX() < 0) {
-			gameState = false;
 			hero.setHeroX(44 / 2);
 			hero.setHeroY(20 / 2);
-			this.map[hero.getHeroY()][hero.getHeroX()] = "P";
+			view.alertMsg("YOU WIN LEVELING YOU UP IF NECESSARY!!!");
+			if ( requiredExperiece < experience) {
+				hero.setHeroLevel(hero.getHeroLevel()+1);
+			}
+			if (view instanceof ViewConsole) {
+				view.clearView();
+			}
+		}
+		if (this.map[hero.getHeroY()][hero.getHeroX()] == "E") {
+			view.alertMsg("You have Encounterd an enermy");
+			_fightOrRunSimulation();
+		}
+
+		this.map[hero.getHeroY()][hero.getHeroX()] = "P";
+
+		if (level > 7) {
 			if (view instanceof ViewConsole) {
 				view.clearView();
 				view.alertMsg("You Win");
@@ -56,11 +73,6 @@ public class GameMap {
 			view.iniView();
 			return;
 		}
-		if (this.map[hero.getHeroY()][hero.getHeroX()] == "E") {
-			view.alertMsg("You have Encounterd an enermy");
-			_fightOrRunSimulation();
-		}
-		this.map[hero.getHeroY()][hero.getHeroX()] = "P";
 		return;
 	}
 
@@ -113,8 +125,6 @@ public class GameMap {
 	}
 
 	public void fleeEnermy() {
-		// works just gonna add a twist
-
 		hero.setHeroX(previousPos[0]);
 		hero.setHeroY(previousPos[1]);
 		renderMap();
@@ -137,6 +147,7 @@ public class GameMap {
 			view.iniView();
 			return;
 		}
+		hero.setHeroExperience(hero.getHeroExperience()+24);
 		System.out.println("Let's Fight..." + s);
 		return;
 	}

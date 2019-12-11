@@ -151,6 +151,7 @@ public class Hero implements HeroPlan {
                                 "Level: " + _level + '\n' +
                                 "Attack: " + _attack + '\n' +
                                 "Artifact: " + _artifact + '\n' +
+                                "Experience: " + _experience + '\n' +
                                 "Defence: " + _defence + '\n' +
                                 "x coordinate: " + _x + '\n' +
                                 "y coordinate: " + _y + '\n'); 

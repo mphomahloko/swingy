@@ -21,7 +21,7 @@ public class Witch implements HeroBuilder {
         _hero.setHeroAttack(10);
         _hero.setHeroDefence(5);
         _hero.setHeroArtifact("");
-	_hero.setHeroExperience(300);
+	_hero.setHeroExperience(2451);
 
         _hero.setHeroX(44 / 2);
         _hero.setHeroY(20 / 2);
