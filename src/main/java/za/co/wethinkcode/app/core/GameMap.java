@@ -1,11 +1,11 @@
 package za.co.wethinkcode.app.core;
 
+import java.util.Random;
+
 import za.co.wethinkcode.app.model.Hero;
 import za.co.wethinkcode.app.view.SwingyView;
 import za.co.wethinkcode.app.view.console.ViewConsole;
 import za.co.wethinkcode.app.view.gui.ViewGUI;
-
-import java.util.Scanner;
 
 public class GameMap {
 	public String[][] map;
@@ -24,7 +24,7 @@ public class GameMap {
 		this.map = new String[20][44];
 		this.view = view;
 		renderMap();
-		return ;
+		return;
 	}
 
 	public void renderMap() {
@@ -36,30 +36,32 @@ public class GameMap {
 		// this is a problem
 		this.map[6][10] = "E";
 		placePlayer();
-		return ;
+		return;
 	}
 
 	public void placePlayer() {
-		if (this.map.length <= hero.getHeroY() || this.map[0].length <= hero.getHeroX() || hero.getHeroY() < 0 || hero.getHeroX() < 0) {
+		if (this.map.length <= hero.getHeroY() || this.map[0].length <= hero.getHeroX() || hero.getHeroY() < 0
+				|| hero.getHeroX() < 0) {
 			gameState = false;
 			hero.setHeroX(44 / 2);
 			hero.setHeroY(20 / 2);
 			this.map[hero.getHeroY()][hero.getHeroX()] = "P";
 			if (view instanceof ViewConsole) {
 				view.clearView();
-				return ;
+				view.alertMsg("You Win");
+				return;
 			}
 			view.alertMsg("You Win");
 			view.clearView();
 			view.iniView();
-			return ;
+			return;
 		}
 		if (this.map[hero.getHeroY()][hero.getHeroX()] == "E") {
 			view.alertMsg("You have Encounterd an enermy");
-			_fightOrRunSimulation();  
+			_fightOrRunSimulation();
 		}
 		this.map[hero.getHeroY()][hero.getHeroX()] = "P";
-		return ;
+		return;
 	}
 
 	public void moveRight() {
@@ -68,7 +70,7 @@ public class GameMap {
 		hero.setHeroX(hero.getHeroX() + 1);
 		renderMap();
 		view.drawMap(this);
-		return ;
+		return;
 	}
 
 	public void moveLeft() {
@@ -77,7 +79,7 @@ public class GameMap {
 		hero.setHeroX(hero.getHeroX() - 1);
 		renderMap();
 		view.drawMap(this);
-		return ;
+		return;
 	}
 
 	public void moveDown() {
@@ -86,7 +88,7 @@ public class GameMap {
 		hero.setHeroY(hero.getHeroY() + 1);
 		renderMap();
 		view.drawMap(this);
-		return ;
+		return;
 	}
 
 	public void moveUp() {
@@ -95,32 +97,47 @@ public class GameMap {
 		hero.setHeroY(hero.getHeroY() - 1);
 		renderMap();
 		view.drawMap(this);
-		return ;
+		return;
 	}
 
 	private void _fightOrRunSimulation() {
 		if (view instanceof ViewConsole) {
-			ViewConsole consoleView = (ViewConsole)view;
+			ViewConsole consoleView = (ViewConsole) view;
 			consoleView.runOrFight(this);
-			return ;
+			return;
 		}
-		ViewGUI guiView = (ViewGUI)view;
+		ViewGUI guiView = (ViewGUI) view;
 		guiView.clearView();
 		guiView.fightgameView(this);
-		return ;
+		return;
 	}
 
 	public void fleeEnermy() {
 		// works just gonna add a twist
+
 		hero.setHeroX(previousPos[0]);
 		hero.setHeroY(previousPos[1]);
 		renderMap();
-		return ;
+		return;
 	}
 
 	public void fightEnermy() {
 		// add the experience field to complete this section
-		System.out.println("Let's Fight...");
-		return ;
+		Random r = new Random();
+		int s = r.nextInt(2);
+		if (s == 0) {
+			gameState = false;
+			if (view instanceof ViewConsole) {
+				view.clearView();
+				view.alertMsg("You lost the fight.");
+				return;
+			}
+			view.alertMsg("You lost the fight.");
+			view.clearView();
+			view.iniView();
+			return;
+		}
+		System.out.println("Let's Fight..." + s);
+		return;
 	}
 }

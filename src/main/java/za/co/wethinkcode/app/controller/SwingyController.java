@@ -26,7 +26,6 @@ import java.util.Scanner;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-import javassist.expr.Instanceof;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
@@ -187,7 +186,6 @@ public class SwingyController {
 				System.out.println("Not a number read instructions properly");
 			}
 		}
-		_theView.alertMsg("You Win");
 		consoleInterraction();
 		return ;
 	}
