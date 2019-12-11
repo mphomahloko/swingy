@@ -27,6 +27,7 @@ public class CustomHero implements HeroBuilder {
         _hero.setHeroAttack(Integer.parseInt(heroDets.get("attack")));
         _hero.setHeroDefence(Integer.parseInt(heroDets.get("defence")));
         _hero.setHeroArtifact(heroDets.get("artifact"));
+	_hero.setHeroExperience(Integer.parseInt(heroDets.get("experience")));
 
         _hero.setHeroX(Integer.parseInt(heroDets.get("x")));
         _hero.setHeroY(Integer.parseInt(heroDets.get("y")));

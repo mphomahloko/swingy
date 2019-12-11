@@ -47,6 +47,7 @@ public class PlayerStatDB {
                 player.put("attack", players.getString("attack"));
                 player.put("defence", players.getString("defence"));
                 player.put("artifact", players.getString("artifact"));
+		player.put("experience", players.getString("experience"));
                 ret.add(player);
             }
             return ret;
@@ -60,7 +61,7 @@ public class PlayerStatDB {
         if (connect == null){
             getConnection();
         }
-        PreparedStatement pStatement = connect.prepareStatement("INSERT INTO users(name, type, xp, hp, attack, defence, level, y, x, artifact) values(?,?,?,?,?,?,?,?,?,?);");
+        PreparedStatement pStatement = connect.prepareStatement("INSERT INTO users(name, type, xp, hp, attack, defence, level, y, x, artifact, experience) values(?,?,?,?,?,?,?,?,?,?,?);");
         pStatement.setString(1, hero.getHeroName());
         pStatement.setString(2, hero.getHeroType());
         pStatement.setInt(3, hero.getHeroXP());
@@ -71,6 +72,7 @@ public class PlayerStatDB {
         pStatement.setInt(8, hero.getHeroY());
         pStatement.setInt(9, hero.getHeroX());
         pStatement.setString(10, hero.getHeroArtifact());
+	pStatement.setInt(11, hero.getHeroExperience());
         pStatement.execute();
         pStatement.close();
     }
@@ -86,7 +88,8 @@ public class PlayerStatDB {
         if (connect == null){
             getConnection();
         }
-        PreparedStatement pStatement = connect.prepareStatement("UPDATE users SET name = ?, type = ?, xp = ?, hp = ?, attack = ?, defence = ?, level = ?, y = ?, x = ?, artifact = ? WHERE id = "+hero.getHeroId()+";");
+        PreparedStatement pStatement = connect.prepareStatement("UPDATE users SET name = ?, type = ?, xp = ?, hp = ?, attack = ?, defence = ?," +
+								" level = ?, y = ?, x = ?, artifact = ?, experience = ? WHERE id = "+hero.getHeroId()+";");
         pStatement.setString(1, hero.getHeroName());
         pStatement.setString(2, hero.getHeroType());
         pStatement.setInt(3, hero.getHeroXP());
@@ -97,6 +100,7 @@ public class PlayerStatDB {
         pStatement.setInt(8, hero.getHeroY());
         pStatement.setInt(9, hero.getHeroX());
         pStatement.setString(10, hero.getHeroArtifact());
+	pStatement.setInt(11, hero.getHeroExperience());
         pStatement.execute();
         pStatement.close();
     }
@@ -114,9 +118,9 @@ public class PlayerStatDB {
             ResultSet res = statement.executeQuery("SELECT name FROM sqlite_master WHERE type='table' AND name='users'");
             if (!res.next()){
                 Statement statement1 = connect.createStatement();
-                statement1.execute("CREATE TABLE `users` ( `id` integer , `name` varchar(30) , `type` varchar(20) ," +
-                        " `xp` integer , `hp` integer , `attack` integer , `defence` integer , `level` integer ," +
-                        "`y` integer , `x` integer , `artifact` varchar(20), primary key(id));");
+                statement1.execute("CREATE TABLE `users` ( `id` integer, `name` varchar(30), `type` varchar(20)," +
+                        " `xp` integer, `hp` integer, `attack` integer, `defence` integer, `level` integer," +
+                        "`y` integer, `x` integer, `artifact` varchar(20), `experience` integer, primary key(id));");
             }
         }
     }

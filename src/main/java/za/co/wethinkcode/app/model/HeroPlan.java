@@ -37,6 +37,12 @@ public interface HeroPlan {
     public void setHeroArtifact(String artifact);
     public String getHeroArtifact();
 
+/*                    Hero Experience                                         */
+    public void setHeroExperience(Integer experience);
+    public Integer  getHeroExperience();
+
+
+
 /*                   Hero Position                                            */
     public void setHeroX(Integer x);
     public Integer getHeroX();

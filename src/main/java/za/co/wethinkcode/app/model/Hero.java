@@ -4,8 +4,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class Hero implements HeroPlan {
-    @NotNull
-    @Size(min = 3, max = 15)
+    @NotNull(message = "hero name Should not be null")
+    @Size(message = "hero name should be between 3 and 15", min = 3, max = 15)
     private String _name;
     private Integer _id;
 
@@ -17,6 +17,7 @@ public class Hero implements HeroPlan {
     private Integer _attack;
     private Integer _defence;
     private String _artifact;
+    private Integer _experience;
 
     private Integer _x;
     private Integer _y;
@@ -110,6 +111,15 @@ public class Hero implements HeroPlan {
 
     @Override
     public String getHeroArtifact() { return _artifact; }
+
+/*                    Hero Experience                                         */
+    @Override
+    public void setHeroExperience(Integer experience) {
+	    _experience = experience;
+    }
+
+    @Override
+    public Integer  getHeroExperience() { return _experience; }
 
 
 /*                   Hero Position                                            */
