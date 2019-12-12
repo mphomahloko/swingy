@@ -37,7 +37,6 @@ public class GameMap {
 				this.map[i][j] = ".";
 			}
 		}
-
 		// this was moved
 		this.map[6][6] = "E";
 		return;
@@ -56,6 +55,7 @@ public class GameMap {
 				_mapSize = (level-1)*5+10-(level%2);
 				hero.setHeroLevel(hero.getHeroLevel()+1);
 				this.map = new String[_mapSize][_mapSize];
+				renderMap();
 				placePlayer();
 			}
 			if (view instanceof ViewConsole) {

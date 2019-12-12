@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
+import javax.swing.JScrollPane;
 import javax.swing.JOptionPane;
 import javax.swing.BorderFactory;
 
@@ -204,6 +205,8 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_PanelA = new JPanel();
 		_PanelA.setLayout(null);
 		_PanelA.add(_txtDisplay);
+		// this.getContentPane().add(new JScrollPane(_txtDisplay));	
+		_PanelA.add(new JScrollPane(_txtDisplay));
 		_txtDisplay.setBounds(10, 20, 290, 350);
 		_txtDisplay.setEditable(false);
 		_PanelA.setBounds(50, 30, 320, 380);
