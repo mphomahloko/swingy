@@ -13,8 +13,14 @@ public class SwingyModel {
         	if (type == "Witch") {
             		hBuilder = new Witch();
         	}
+        	if (type == "Goblin") {
+            		hBuilder = new Goblin();
+        	}
+        	if (type == "Giant") {
+            		hBuilder = new Giant();
+        	}
         	else {
-            		hBuilder = new Witch();
+            		hBuilder = new Giant();
         	}
         	return hBuilder;
 	}

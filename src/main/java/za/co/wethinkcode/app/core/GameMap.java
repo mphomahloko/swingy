@@ -6,24 +6,28 @@ import za.co.wethinkcode.app.model.Hero;
 import za.co.wethinkcode.app.view.SwingyView;
 import za.co.wethinkcode.app.view.console.ViewConsole;
 import za.co.wethinkcode.app.view.gui.ViewGUI;
+import za.co.wethinkcode.app.artifacts.Artifacts;
 
 public class GameMap {
 	public String[][] map;
 	public SwingyView view;
 	public Hero hero;
+	public static int _mapSize = 9;
 	private Integer[] previousPos;
 	public boolean gameState;
 
 	public GameMap(Hero hero, SwingyView view) {
 		this.hero = hero;
+		int level = hero.getHeroLevel();
+		 _mapSize = (level-1)*5+10-(level%2);
 		previousPos = new Integer[2];
 		previousPos[0] = hero.getHeroX();
 		previousPos[1] = hero.getHeroY();
 
-		// rough sketch
-		this.map = new String[20][44];
+		this.map = new String[_mapSize][_mapSize];
 		this.view = view;
 		renderMap();
+		placePlayer();
 		return;
 	}
 
@@ -33,9 +37,9 @@ public class GameMap {
 				this.map[i][j] = ".";
 			}
 		}
-		// this is a problem
-		this.map[6][10] = "E";
-		placePlayer();
+
+		// this was moved
+		this.map[6][6] = "E";
 		return;
 	}
 
@@ -45,11 +49,14 @@ public class GameMap {
 		int experience =  hero.getHeroExperience();
 		if (this.map.length <= hero.getHeroY() || this.map[0].length <= hero.getHeroX() || hero.getHeroY() < 0
 				|| hero.getHeroX() < 0) {
-			hero.setHeroX(44 / 2);
-			hero.setHeroY(20 / 2);
+			hero.setHeroX(_mapSize / 2);
+			hero.setHeroY(_mapSize / 2);
 			view.alertMsg("YOU WIN LEVELING YOU UP IF NECESSARY!!!");
-			if ( requiredExperiece < experience) {
+			if (requiredExperiece <= experience) {
+				_mapSize = (level-1)*5+10-(level%2);
 				hero.setHeroLevel(hero.getHeroLevel()+1);
+				this.map = new String[_mapSize][_mapSize];
+				placePlayer();
 			}
 			if (view instanceof ViewConsole) {
 				view.clearView();
@@ -81,6 +88,7 @@ public class GameMap {
 		previousPos[1] = hero.getHeroY();
 		hero.setHeroX(hero.getHeroX() + 1);
 		renderMap();
+		placePlayer();
 		view.drawMap(this);
 		return;
 	}
@@ -90,6 +98,7 @@ public class GameMap {
 		previousPos[1] = hero.getHeroY();
 		hero.setHeroX(hero.getHeroX() - 1);
 		renderMap();
+		placePlayer();
 		view.drawMap(this);
 		return;
 	}
@@ -99,6 +108,7 @@ public class GameMap {
 		previousPos[1] = hero.getHeroY();
 		hero.setHeroY(hero.getHeroY() + 1);
 		renderMap();
+		placePlayer();
 		view.drawMap(this);
 		return;
 	}
@@ -108,6 +118,7 @@ public class GameMap {
 		previousPos[1] = hero.getHeroY();
 		hero.setHeroY(hero.getHeroY() - 1);
 		renderMap();
+		placePlayer();
 		view.drawMap(this);
 		return;
 	}
@@ -132,9 +143,8 @@ public class GameMap {
 	}
 
 	public void fightEnermy() {
-		// add the experience field to complete this section
 		Random r = new Random();
-		int s = r.nextInt(2);
+		int s = r.nextInt(3);
 		if (s == 0) {
 			gameState = false;
 			if (view instanceof ViewConsole) {
@@ -147,8 +157,8 @@ public class GameMap {
 			view.iniView();
 			return;
 		}
-		hero.setHeroExperience(hero.getHeroExperience()+24);
-		System.out.println("Let's Fight..." + s);
-		return;
+		hero.setHeroExperience(hero.getHeroExperience() + 1450);
+		new Artifacts(hero);
+		return ;
 	}
 }

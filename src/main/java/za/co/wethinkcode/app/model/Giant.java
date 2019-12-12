@@ -4,11 +4,10 @@ import za.co.wethinkcode.app.core.GameMap;
 
 import java.util.Map;
 
-    /* types of heros */
-public class Witch implements HeroBuilder {
+public class Giant implements HeroBuilder {
     private Hero _hero;
 
-    public Witch() {
+    public Giant() {
         _hero = new Hero();
         return ;
     }
@@ -16,14 +15,14 @@ public class Witch implements HeroBuilder {
     @Override
     public void buildHero(String name) {
         _hero.setHeroName(name);
-        _hero.setHeroType("Witch");
+        _hero.setHeroType("Goblin");
         _hero.setHeroXP(50);
-        _hero.setHeroHP(696);
+        _hero.setHeroHP(3275);
         _hero.setHeroLevel(1);
-        _hero.setHeroAttack(111);
-        _hero.setHeroDefence(55);
+        _hero.setHeroAttack(211);
+        _hero.setHeroDefence(300);
         _hero.setHeroArtifact("");
-	_hero.setHeroExperience(1000);
+	_hero.setHeroExperience(1500);
 
         _hero.setHeroX(GameMap._mapSize / 2);
         _hero.setHeroY(GameMap._mapSize / 2);

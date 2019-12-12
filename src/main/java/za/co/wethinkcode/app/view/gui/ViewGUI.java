@@ -51,7 +51,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 
 	// hero type ...
 	private JLabel _heroType = new JLabel("Hero Type: ");
-	private String[] hero = { "Swordman", "Knight", "Hunter", "Witch" };
+	private String[] hero = { "Goblin", "Giant", "Witch" };
 	private JComboBox cbHero = new JComboBox<String>(hero);
 
 	// exsiting hero's ...
@@ -192,7 +192,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 		this.add(_view);
 		this.setSize(300, 150);
 		this.setVisible(true);
-		return;
+		return ;
 	}
 
 	@Override
