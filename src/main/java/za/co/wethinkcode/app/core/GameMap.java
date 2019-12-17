@@ -53,6 +53,8 @@ public class GameMap {
 			view.alertMsg("YOU WIN LEVELING YOU UP IF NECESSARY!!!");
 			if (requiredExperiece <= experience) {
 				_mapSize = (level-1)*5+10-(level%2);
+				hero.setHeroX(_mapSize / 2);
+				hero.setHeroY(_mapSize / 2);
 				hero.setHeroLevel(hero.getHeroLevel()+1);
 				this.map = new String[_mapSize][_mapSize];
 				renderMap();

@@ -205,8 +205,6 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_PanelA = new JPanel();
 		_PanelA.setLayout(null);
 		_PanelA.add(_txtDisplay);
-		// this.getContentPane().add(new JScrollPane(_txtDisplay));	
-		_PanelA.add(new JScrollPane(_txtDisplay));
 		_txtDisplay.setBounds(10, 20, 290, 350);
 		_txtDisplay.setEditable(false);
 		_PanelA.setBounds(50, 30, 320, 380);

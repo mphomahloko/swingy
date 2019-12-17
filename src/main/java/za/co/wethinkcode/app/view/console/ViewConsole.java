@@ -32,8 +32,8 @@ public class ViewConsole implements SwingyView {
 		// add more hero's
 		System.out.println("Select Hero Type: \n" +
 							"1. Witch"+
-							"2. Giant"+
-							"3. Goblin");
+							"\n2. Giant"+
+							"\n3. Goblin");
 		
 		int inputChoice = prompt.nextInt();
 		if (inputChoice == 1) {
