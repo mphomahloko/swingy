@@ -11,8 +11,6 @@ import za.co.wethinkcode.app.core.GameMap;
 import java.util.Map;
 import java.util.List;
 
-import java.sql.SQLException;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -20,7 +18,6 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
-import javax.swing.JScrollPane;
 import javax.swing.JOptionPane;
 import javax.swing.BorderFactory;
 
@@ -32,41 +29,40 @@ public class ViewGUI extends JFrame implements SwingyView {
 	private JPanel _view, _PanelA, _PanelB;
 
 	// gui button's ...
-	private JButton _btnUp = new JButton("UP");
-	private JButton _btnDown = new JButton("DOWN");
-	private JButton _btnLeft = new JButton("LEFT");
-	private JButton _btnRight = new JButton("RIGHT");
-	private JButton _newGame = new JButton("New Game.");
-	private JButton _continue = new JButton("Continue ...");
-	private JButton _console = new JButton("Console");
-	private JButton _cont = new JButton("Continue");
-	private JButton _run = new JButton("Run");
-	private JButton _fight = new JButton("Fight");
-	private JButton _quit = new JButton("Quit");
-	private JButton _back = new JButton("Back");
-	private JButton _createHero = new JButton("Create Hero.");
+	private final JButton _btnUp = new JButton("UP");
+	private final JButton _btnDown = new JButton("DOWN");
+	private final JButton _btnLeft = new JButton("LEFT");
+	private final JButton _btnRight = new JButton("RIGHT");
+	private final JButton _newGame = new JButton("New Game.");
+	private final JButton _continue = new JButton("Continue ...");
+	private final JButton _console = new JButton("Console");
+	private final JButton _cont = new JButton("Continue");
+	private final JButton _run = new JButton("Run");
+	private final JButton _fight = new JButton("Fight");
+	private final JButton _quit = new JButton("Quit");
+	private final JButton _back = new JButton("Back");
+	private final JButton _createHero = new JButton("Create Hero.");
 
 	// hero name ...
-	private JLabel _heroName = new JLabel("Hero Name: ");
-	private JTextField _getHeroName = new JTextField(10);
+	private final JLabel _heroName = new JLabel("Hero Name: ");
+	private final JTextField _getHeroName = new JTextField(10);
 
 	// hero type ...
-	private JLabel _heroType = new JLabel("Hero Type: ");
-	private String[] hero = { "Goblin", "Giant", "Witch" };
-	private JComboBox cbHero = new JComboBox<String>(hero);
+	private final JLabel _heroType = new JLabel("Hero Type: ");
+	private final String[] hero = { "Goblin", "Giant", "Witch" };
+	private final JComboBox<String> cbHero = new JComboBox<>(hero);
 
 	// exsiting hero's ...
-	private JComboBox Heros = new JComboBox<String>();
+	private final JComboBox Heros = new JComboBox<String>();
 
 	// game view ...
-	private JTextArea _txtDisplay = new JTextArea(100, 100);
+	private final JTextArea _txtDisplay = new JTextArea(100, 100);
 
 	// player statistics
-	private JTextArea _txtPlayerStats = new JTextArea(50, 50);
+	private final JTextArea _txtPlayerStats = new JTextArea(50, 50);
 
 	public ViewGUI() {
 		super("Swingy Game.");
-		return;
 	}
 
 	@Override
@@ -85,7 +81,6 @@ public class ViewGUI extends JFrame implements SwingyView {
 		this.setLocationRelativeTo(null);
 		this.add(_view);
 		this.setVisible(true);
-		return;
 	}
 
 	@Override
@@ -114,7 +109,6 @@ public class ViewGUI extends JFrame implements SwingyView {
 		this.add(_view);
 		this.setSize(320, 170);
 		this.setVisible(true);
-		return;
 	}
 
 	@Override
@@ -132,7 +126,7 @@ public class ViewGUI extends JFrame implements SwingyView {
 	}
 
 	@Override
-	public void addPlayersInterraction(ActionListener listensForAction) {
+	public void addPlayersInteraction(ActionListener listensForAction) {
 		_newGame.addActionListener(listensForAction);
 		_continue.addActionListener(listensForAction);
 		_createHero.addActionListener(listensForAction);
@@ -146,7 +140,6 @@ public class ViewGUI extends JFrame implements SwingyView {
 		_console.addActionListener(listensForAction);
 		_run.addActionListener(listensForAction);
 		_fight.addActionListener(listensForAction);
-		return;
 	}
 
 	private Object makeObj(final String item) {
@@ -166,10 +159,6 @@ public class ViewGUI extends JFrame implements SwingyView {
 				Heros.addItem(makeObj(m.get("name")));
 			}
 
-		} catch (ClassNotFoundException e1) {
-			e1.printStackTrace();
-		} catch (SQLException e1) {
-			e1.printStackTrace();
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -193,7 +182,6 @@ public class ViewGUI extends JFrame implements SwingyView {
 		this.add(_view);
 		this.setSize(300, 150);
 		this.setVisible(true);
-		return ;
 	}
 
 	@Override
@@ -252,10 +240,9 @@ public class ViewGUI extends JFrame implements SwingyView {
 		this.add(_view);
 		this.setSize(600, 450);
 		this.setVisible(true);
-		return;
 	}
 
-	public void fightgameView(GameMap game) {
+	public void fightGameView(GameMap game) {
 		_view = new JPanel();
 		_view.setLayout(null);
 
@@ -310,7 +297,6 @@ public class ViewGUI extends JFrame implements SwingyView {
 		this.setSize(600, 450);
 		this.setVisible(true);
 		drawMap(game);
-		return;
 	}
 
 	@Override
@@ -319,18 +305,16 @@ public class ViewGUI extends JFrame implements SwingyView {
 		for (int i = 0; i < game.map.length; i += 1) {
 			_txtDisplay.append("     ");
 			for (int j = 0; j < game.map[0].length; j += 1) {
-				_txtDisplay.append(String.valueOf(game.map[i][j]) + " ");
+				_txtDisplay.append(game.map[i][j] + " ");
 			}
 			_txtDisplay.append("\n\r");
 		}
 		_txtPlayerStats.setText(game.hero.toString());
-		return;
 	}
 
 	@Override
 	public void alertMsg(String msg) {
 		JOptionPane.showMessageDialog(null, msg);
-		return;
 	}
 
 	@Override
@@ -339,7 +323,6 @@ public class ViewGUI extends JFrame implements SwingyView {
 		this.revalidate();
 		this.repaint();
 		this.setVisible(false);
-		return;
 	}
 
 }

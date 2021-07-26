@@ -24,19 +24,15 @@ public class App {
                 if (args[0].equals("gui")) {
                     controller.guiInterraction();
                 }else{
-                    controller.consoleInterraction();
+                    controller.consoleInteraction();
                 }
             }else {
                 throw new Exception();
             }
-        }catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (SQLException e) {
+        }catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         } catch(Exception e) {
             System.out.println("Please choose weather to run in gui or console.");
         }
-
-        return ;
     }
 }

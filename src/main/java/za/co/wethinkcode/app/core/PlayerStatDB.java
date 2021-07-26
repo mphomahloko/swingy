@@ -15,11 +15,11 @@ import java.util.Map;
 import za.co.wethinkcode.app.model.Hero;
 
 public class PlayerStatDB {
-    private static PlayerStatDB _db = new PlayerStatDB();
+    private static final PlayerStatDB _db = new PlayerStatDB();
     private static Connection connect;
     private static boolean hasData = false;
 
-    private PlayerStatDB() { return ; }
+    private PlayerStatDB() { }
 
     public static PlayerStatDB getPlayerStats() {
         return PlayerStatDB._db;
@@ -32,22 +32,21 @@ public class PlayerStatDB {
         Statement statement = connect.createStatement();
         ResultSet res = statement.executeQuery("SELECT * FROM users");
         try {
-            ResultSet players = res;
-            List<Map<String, String>> ret = new ArrayList<Map<String, String>>();
-            while (players.next()){
-                Map<String,String> player = new HashMap<String, String>();
-                player.put("name", players.getString("name"));
-                player.put("id", players.getString("id"));
-                player.put("type", players.getString("type"));
-                player.put("xp", players.getString("xp"));
-                player.put("hp", players.getString("hp"));
-                player.put("level", players.getString("level"));
-                player.put("y", players.getString("y"));
-                player.put("x", players.getString("x"));
-                player.put("attack", players.getString("attack"));
-                player.put("defence", players.getString("defence"));
-                player.put("artifact", players.getString("artifact"));
-		player.put("experience", players.getString("experience"));
+            List<Map<String, String>> ret = new ArrayList<>();
+            while (res.next()){
+                Map<String,String> player = new HashMap<>();
+                player.put("name", res.getString("name"));
+                player.put("id", res.getString("id"));
+                player.put("type", res.getString("type"));
+                player.put("xp", res.getString("xp"));
+                player.put("hp", res.getString("hp"));
+                player.put("level", res.getString("level"));
+                player.put("y", res.getString("y"));
+                player.put("x", res.getString("x"));
+                player.put("attack", res.getString("attack"));
+                player.put("defence", res.getString("defence"));
+                player.put("artifact", res.getString("artifact"));
+		player.put("experience", res.getString("experience"));
                 ret.add(player);
             }
             return ret;
@@ -111,7 +110,7 @@ public class PlayerStatDB {
         init();
     }
 
-    private void init() throws SQLException, ClassNotFoundException {
+    private void init() throws SQLException {
         if (!hasData){
             hasData = true;
             Statement statement = connect.createStatement();

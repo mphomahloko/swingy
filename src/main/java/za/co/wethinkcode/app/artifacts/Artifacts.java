@@ -5,7 +5,7 @@ import za.co.wethinkcode.app.model.Hero;
 import java.util.Random;
 
 public class Artifacts {
-	private Hero _hero;
+	private final Hero _hero;
 
 	public Artifacts(Hero hero) {
 		this._hero = hero;
@@ -15,24 +15,20 @@ public class Artifacts {
 		if (s == 0) _armor();
 		if (s == 1) _helm();
 		if (s == 2) _weapon();
-		return ;
 	}
 
 	private void _armor() {
 		_hero.setHeroDefence(_hero.getHeroDefence() + 5);
 		_hero.setHeroArtifact("Armor");
-		return ;
 	}
 
 	private void _helm() {
 		_hero.setHeroHP(_hero.getHeroHP() + 2);
 		_hero.setHeroArtifact("Helm");
-		return ;
 	}
 
 	private void _weapon() {
 		_hero.setHeroAttack(_hero.getHeroAttack() + 8);
 		_hero.setHeroArtifact("Weapon");
-		return ;
 	}
 }

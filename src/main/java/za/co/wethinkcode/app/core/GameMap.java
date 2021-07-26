@@ -13,7 +13,7 @@ public class GameMap {
 	public SwingyView view;
 	public Hero hero;
 	public static int _mapSize = 9;
-	private Integer[] previousPos;
+	private final Integer[] previousPos;
 	public boolean gameState;
 
 	public GameMap(Hero hero, SwingyView view) {
@@ -28,7 +28,6 @@ public class GameMap {
 		this.view = view;
 		renderMap();
 		placePlayer();
-		return;
 	}
 
 	public void renderMap() {
@@ -39,7 +38,6 @@ public class GameMap {
 		}
 		// this was moved
 		this.map[6][6] = "E";
-		return;
 	}
 
 	public void placePlayer() {
@@ -64,7 +62,7 @@ public class GameMap {
 				view.clearView();
 			}
 		}
-		if (this.map[hero.getHeroY()][hero.getHeroX()] == "E") {
+		if (this.map[hero.getHeroY()][hero.getHeroX()].equals("E")) {
 			view.alertMsg("You have Encounterd an enermy");
 			_fightOrRunSimulation();
 		}
@@ -80,9 +78,7 @@ public class GameMap {
 			view.alertMsg("You Win");
 			view.clearView();
 			view.iniView();
-			return;
 		}
-		return;
 	}
 
 	public void moveRight() {
@@ -92,7 +88,6 @@ public class GameMap {
 		renderMap();
 		placePlayer();
 		view.drawMap(this);
-		return;
 	}
 
 	public void moveLeft() {
@@ -102,7 +97,6 @@ public class GameMap {
 		renderMap();
 		placePlayer();
 		view.drawMap(this);
-		return;
 	}
 
 	public void moveDown() {
@@ -112,7 +106,6 @@ public class GameMap {
 		renderMap();
 		placePlayer();
 		view.drawMap(this);
-		return;
 	}
 
 	public void moveUp() {
@@ -122,7 +115,6 @@ public class GameMap {
 		renderMap();
 		placePlayer();
 		view.drawMap(this);
-		return;
 	}
 
 	private void _fightOrRunSimulation() {
@@ -133,18 +125,16 @@ public class GameMap {
 		}
 		ViewGUI guiView = (ViewGUI) view;
 		guiView.clearView();
-		guiView.fightgameView(this);
-		return;
+		guiView.fightGameView(this);
 	}
 
-	public void fleeEnermy() {
+	public void fleeEnemy() {
 		hero.setHeroX(previousPos[0]);
 		hero.setHeroY(previousPos[1]);
 		renderMap();
-		return;
 	}
 
-	public void fightEnermy() {
+	public void fightEnemy() {
 		Random r = new Random();
 		int s = r.nextInt(3);
 		if (s == 0) {
@@ -161,6 +151,5 @@ public class GameMap {
 		}
 		hero.setHeroExperience(hero.getHeroExperience() + 1450);
 		new Artifacts(hero);
-		return ;
 	}
 }

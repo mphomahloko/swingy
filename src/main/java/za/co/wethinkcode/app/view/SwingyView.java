@@ -9,14 +9,14 @@ import za.co.wethinkcode.app.core.GameMap;
 /* ************************************************************************** */
 
 public interface SwingyView {
-	public void iniView();
-	public void gameView();
-	public void clearView();
-	public void newGameView();
-	public void continueView();
-	public String getHeroName();
-	public String getHeroType();
-	public void	alertMsg(String msg);
-	public void drawMap(GameMap game);
-	public void addPlayersInterraction(ActionListener listensForAction);
+	void iniView();
+	void gameView();
+	void clearView();
+	void newGameView();
+	void continueView();
+	String getHeroName();
+	String getHeroType();
+	void alertMsg(String msg);
+	void drawMap(GameMap game);
+	void addPlayersInteraction(ActionListener listensForAction);
 }

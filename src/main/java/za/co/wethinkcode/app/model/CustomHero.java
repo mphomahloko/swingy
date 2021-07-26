@@ -3,17 +3,14 @@ package za.co.wethinkcode.app.model;
 import java.util.Map;
     /* types of heros */
 public class CustomHero implements HeroBuilder {
-    private Hero _hero;
+    private final Hero _hero;
 
     public CustomHero() {
         _hero = new Hero();
-        return ;
     }
 
     @Override
-    public void buildHero(String name) {
-        return ;
-    }
+    public void buildHero(String name) {}
 
     @Override
     public void buildCustomHero(Map<String,String> heroDets) {

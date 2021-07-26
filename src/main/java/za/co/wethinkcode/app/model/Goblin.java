@@ -5,11 +5,10 @@ import za.co.wethinkcode.app.core.GameMap;
 import java.util.Map;
 
 public class Goblin implements HeroBuilder {
-    private Hero _hero;
+    private final Hero _hero;
 
     public Goblin() {
         _hero = new Hero();
-        return ;
     }
 
     @Override
@@ -26,11 +25,10 @@ public class Goblin implements HeroBuilder {
 
         _hero.setHeroX(GameMap._mapSize / 2);
         _hero.setHeroY(GameMap._mapSize / 2);
-        return ;
     }
 
     @Override
-    public void buildCustomHero(Map<String,String> heroDets) { return ; }
+    public void buildCustomHero(Map<String,String> heroDets) {}
 
     @Override
     public Hero getHero() { return _hero; }

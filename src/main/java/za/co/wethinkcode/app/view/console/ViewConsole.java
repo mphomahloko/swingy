@@ -13,14 +13,12 @@ public class ViewConsole implements SwingyView {
 	
 	public ViewConsole() {
 		clearView();
-		return ;
 	}
 
 	@Override
 	public void iniView() {
 		System.out.println("Welcome to Swingy.");
 		System.out.println("1. New Game\n2. Continue ...\n3. Switch to GUI\n4. EXIT");
-	    return ;
 	}
 	
 	@Override
@@ -45,7 +43,6 @@ public class ViewConsole implements SwingyView {
 		if (inputChoice == 3) {
 			_heroType = "Goblin";
 		}
-		return ;
 	}
 
 	@Override
@@ -61,7 +58,6 @@ public class ViewConsole implements SwingyView {
 	@Override
 	public void continueView() {
 		System.out.println("Previously saved games.");
-		return ;
 	}
 
 	@Override
@@ -86,7 +82,6 @@ public class ViewConsole implements SwingyView {
 			System.out.println();
 		}
 		System.out.println("\nINSTRUCTIONS\t1. UP\t2.DOWN\t3.LEFT\t4.RIGHT\t5.HOME SCREEN");
-		return ;
 	}
 
 	public void runOrFight(GameMap game) {
@@ -95,11 +90,11 @@ public class ViewConsole implements SwingyView {
 			System.out.println("\n\t1. Run\t2.Fight");
 			int inputChoice = choice.nextInt();
 			if (inputChoice == 1) {
-				game.fleeEnermy(); 
+				game.fleeEnemy();
 				return ;
 			}
 			if (inputChoice == 2) {
-				game.fightEnermy(); 
+				game.fightEnemy();
 				return ;
 			}
 			System.out.println("invalid Input");
@@ -108,18 +103,16 @@ public class ViewConsole implements SwingyView {
 			System.out.println("invalid Input");
 			runOrFight(game);
 		}
-		return ;
 	}
 	
 	@Override
 	public void alertMsg(String msg) {
 		System.out.println(msg);
-		return ;
 	}
 
 	@Override
-	public void gameView() { return ; }
+	public void gameView() {}
 	
 	@Override
-	public void addPlayersInterraction(ActionListener listensForAction) { return ; }
+	public void addPlayersInteraction(ActionListener listensForAction) {}
 }

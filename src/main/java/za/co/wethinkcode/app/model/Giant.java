@@ -5,11 +5,10 @@ import za.co.wethinkcode.app.core.GameMap;
 import java.util.Map;
 
 public class Giant implements HeroBuilder {
-    private Hero _hero;
+    private final Hero _hero;
 
     public Giant() {
         _hero = new Hero();
-        return ;
     }
 
     @Override
@@ -22,15 +21,14 @@ public class Giant implements HeroBuilder {
         _hero.setHeroAttack(211);
         _hero.setHeroDefence(300);
         _hero.setHeroArtifact("");
-	_hero.setHeroExperience(1500);
+	    _hero.setHeroExperience(1500);
 
         _hero.setHeroX(GameMap._mapSize / 2);
         _hero.setHeroY(GameMap._mapSize / 2);
-        return ;
     }
 
     @Override
-    public void buildCustomHero(Map<String,String> heroDets) { return ; }
+    public void buildCustomHero(Map<String,String> heroDets) { }
 
     @Override
     public Hero getHero() { return _hero; }

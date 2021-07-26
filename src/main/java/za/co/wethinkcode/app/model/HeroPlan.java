@@ -1,52 +1,40 @@
 package za.co.wethinkcode.app.model;
 
 public interface HeroPlan {
-/*              Hero Name                                                      */
-    public void setHeroName(String name);
-    public String getHeroName();
 
-/*                       Hero Id                                               */
-    public void setHeroId(Integer id);
-    public Integer getHeroId();
+    void setHeroName(String name);
+    String getHeroName();
 
-/*                      Hero Type                                              */
-    public void setHeroType(String type);
-    public String getHeroType();
+    void setHeroId(Integer id);
+    Integer getHeroId();
 
-/*                     Hero Xp                                                 */
-    public void setHeroXP(Integer xp);
-    public Integer getHeroXP();
+    void setHeroType(String type);
+    String getHeroType();
 
-/*                     Hero Hp                                                 */
-    public void setHeroHP(Integer hp);
-    public Integer getHeroHP();
+    void setHeroXP(Integer xp);
+    Integer getHeroXP();
 
-/*                     Hero Level                                              */
-    public void setHeroLevel(Integer level);
-    public Integer getHeroLevel();
+    void setHeroHP(Integer hp);
+    Integer getHeroHP();
 
-/*                     Hero attack                                            */
-    public void setHeroAttack(Integer attack);
-    public Integer getHeroAttack();
+    void setHeroLevel(Integer level);
+    Integer getHeroLevel();
 
-/*                    Hero Defence                                            */
-    public void setHeroDefence(Integer defence);
-    public Integer getHeroDefence();
+    void setHeroAttack(Integer attack);
+    Integer getHeroAttack();
 
-/*                    Hero Artifact                                           */
-    public void setHeroArtifact(String artifact);
-    public String getHeroArtifact();
+    void setHeroDefence(Integer defence);
+    Integer getHeroDefence();
 
-/*                    Hero Experience                                         */
-    public void setHeroExperience(Integer experience);
-    public Integer  getHeroExperience();
+    void setHeroArtifact(String artifact);
+    String getHeroArtifact();
 
+    void setHeroExperience(Integer experience);
+    Integer  getHeroExperience();
 
+    void setHeroX(Integer x);
+    Integer getHeroX();
 
-/*                   Hero Position                                            */
-    public void setHeroX(Integer x);
-    public Integer getHeroX();
-
-    public void setHeroY(Integer y);
-    public Integer getHeroY();
+    void setHeroY(Integer y);
+    Integer getHeroY();
 }

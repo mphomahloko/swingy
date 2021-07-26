@@ -3,23 +3,17 @@ package za.co.wethinkcode.app.model;
 import java.util.Map;
 
 public class SwingyModel {
-	public SwingyModel() {
-        	return ;
-	}
-	
-    	// turn this into a factory
+	public SwingyModel() {}
+
 	private HeroBuilder _createHeroType(String type) {
-        	HeroBuilder hBuilder;
-        	if (type == "Witch") {
+        	HeroBuilder hBuilder = null;
+        	if (type.equals("Witch")) {
             		hBuilder = new Witch();
         	}
-        	if (type == "Goblin") {
+        	if (type.equals("Goblin")) {
             		hBuilder = new Goblin();
         	}
-        	if (type == "Giant") {
-            		hBuilder = new Giant();
-        	}
-        	else {
+        	if (type.equals("Giant")) {
             		hBuilder = new Giant();
         	}
         	return hBuilder;
